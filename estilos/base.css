@@ -1,0 +1,58 @@
+/* Resetear algunos estilos predeterminados */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Fuente y color de fondo principales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e9e9e9;
+}
+
+/* Estilos de la barra de navegación */
+.navbar {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+}
+
+.menu .item {
+    margin: 0 1rem;
+}
+
+.menu .item a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.menu .item a:hover {
+    color: #ff9900;
+}
+
+/* Estilos del pié de página */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Manager</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="estilos/base.css">
+    <link rel="stylesheet" href="estilos/login.css">
+</head>
+
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <div class="logo">
+            <h1 class="logo-text">Parking Manager</h1>
+        </div>
+        <ul class="menu">
+            <li class="item"><a href="index.html">Inicio</a></li>
+            <li class="item"><a href="login.html">Iniciar sesión</a></li>
+            <li class="item"><a href="register.html">Registrarse</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+
+        <!-- Formulario de inicio de sesión -->
+        <section class="login-section">
+            <div class="login-form-container">
+                <h2 class="section-title">Log In</h2>
+                <form class="login-form" action="login.php" method="post">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="login-button">Log In</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pié de página -->
+    <footer class="footer">
+        <p class="texto">&copy; 2023 Parking Manager. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
