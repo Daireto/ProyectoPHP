@@ -4,7 +4,7 @@
     background-size: cover;
     color: white;
     text-align: center;
-    padding: 240px;
+    padding: 240px 0;
 }
 
 .header .contenido {
@@ -23,6 +23,17 @@
     font-weight: bold;
 }
 
+@media screen and (max-width: 768px) {
+    .header .titulo {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .header .nombre-app {
+        font-size: 36px;
+    }
+}
+
 /* Estilos del contenido principal */
 .contenido-principal {
     text-align: center;
@@ -35,6 +46,13 @@
 .contenido-principal h2 {
     font-size: 32px;
     margin-bottom: 16px;
+}
+
+@media screen and (max-width: 768px) {
+    .contenido-principal h2 {
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
 }
 
 /* Estilos de la sección de horarios */
@@ -66,6 +84,12 @@
 
 .tabla-horarios tr {
     background-color: #c1c995;
+}
+
+@media screen and (max-width: 768px) {
+    .horarios {
+        padding: 100px 90px;
+    }
 }
 
 /* Estilos del formulario de contacto */
@@ -132,4 +156,10 @@
 
 .enviar:hover {
     background-color: #ff9900;
+}
+
+@media screen and (max-width: 768px) {
+    .contacto-imagen {
+        flex: 0;
+    }
 }

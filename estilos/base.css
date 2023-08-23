@@ -49,6 +49,23 @@ body {
     color: #ff9900;
 }
 
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .menu {
+        flex-direction: column;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .menu .item {
+        display: block;
+        padding: 10px 0;
+    }
+}
+
 /* Estilos del pié de página */
 .footer {
     background-color: #333;
