@@ -2,10 +2,9 @@
 .header {
     background-image: url("../imagenes/fondo-cabecera.jpg");
     background-size: cover;
-    background-position: top;
     color: white;
     text-align: center;
-    padding: 15rem;
+    padding: 240px;
 }
 
 .header .contenido {
@@ -15,12 +14,12 @@
 }
 
 .header .titulo {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 24px;
+    margin-bottom: 16px;
 }
 
 .header .nombre-app {
-    font-size: 3rem;
+    font-size: 48px;
     font-weight: bold;
 }
 
@@ -34,57 +33,8 @@
 }
 
 .contenido-principal h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-/* Estilos de la sección de celdas disponibles */
-.celdas-disponibles {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 200px 180px;
-}
-
-.celdas {
-    display: flex;
-    gap: 8px;
-}
-
-.celdas-motos {
-    display: flex;
-    flex-direction: column;
-}
-
-.celda-moto {
-    width: 60px;
-    margin: 2px 0;
-}
-
-.celdas-carros {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.celdas-carros .fila {
-    display: flex;
-    justify-content: end;
-}
-
-.celda-carro {
-    width: 60px;
-    height: 80px;
-    margin: 0 2px;
-}
-
-.celda {
-    background-color: #45d658;
-    border: 3px solid #000;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-size: 32px;
+    margin-bottom: 16px;
 }
 
 /* Estilos de la sección de horarios */
@@ -93,11 +43,6 @@
     flex-direction: column;
     align-items: center;
     padding: 200px 180px;
-    background-color: #636363;
-}
-
-.horarios h2 {
-    color: #fff;
 }
 
 .tabla-horarios {
@@ -155,13 +100,13 @@
 }
 
 .campo-formulario {
-    margin-bottom: 1.5rem;
+    margin-bottom: 24px;
 }
 
 .campo-formulario label {
     display: block;
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    margin-bottom: 8px;
 }
 
 .campo-formulario input,
@@ -173,14 +118,14 @@
 }
 
 .campo-formulario textarea {
-    resize: vertical;
+    resize: none;
 }
 
 .enviar {
     background-color: #333;
     color: white;
     border: none;
-    padding: 0.5rem 1rem;
+    padding: 8px 16px;
     cursor: pointer;
     transition: background-color 0.3s;
 }

@@ -1,6 +1,13 @@
+/* Estilos del cuerpo de la página */
+body {
+    background-image: url("../imagenes/fondo-cabecera.jpg");
+    background-size: cover;
+}
+
 /* Estilos del formulario de login */
 .login {
-    background-color: #f9f9f9;
+    background-color: rgba(39, 39, 39, 0.342);
+    backdrop-filter: blur(5px);
     height: calc(100vh - 128px);
     display: flex;
     justify-content: center;
@@ -10,28 +17,33 @@
 .login-contenedor {
     background-color: white;
     border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
+    padding: 32px;
     max-width: 400px;
     width: 100%;
 }
 
+.login-contenedor .titulo {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
 .formulario-login {
-    display: flex;
-    flex-direction: column;
+    text-align: center;
 }
 
 .campo-formulario {
-    margin-bottom: 1.5rem;
+    margin-bottom: 24px;
+    text-align: center;
 }
 
 .campo-formulario label {
+    display: block;
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    margin-bottom: 8px;
 }
 
 .campo-formulario input {
-    padding: 0.5rem;
+    padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
     transition: border-color 0.3s;
@@ -45,7 +57,7 @@
     background-color: #333;
     color: white;
     border: none;
-    padding: 0.5rem 1rem;
+    padding: 8px 16px;
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s;
