@@ -1,55 +1,48 @@
 /* Estilos de la cabecera */
-.header {
+header {
     background-image: url("../imagenes/fondo-cabecera.jpg");
     background-size: cover;
     color: white;
     text-align: center;
     padding: 240px 0;
-}
-
-.header .contenido {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.header .titulo {
+header h2 {
     font-size: 24px;
     margin-bottom: 16px;
 }
 
-.header .nombre-app {
+header h1 {
     font-size: 48px;
     font-weight: bold;
 }
 
 @media screen and (max-width: 768px) {
-    .header .titulo {
+    header h2 {
         font-size: 18px;
         margin-bottom: 8px;
     }
 
-    .header .nombre-app {
+    header h1 {
         font-size: 36px;
     }
 }
 
 /* Estilos del contenido principal */
-.contenido-principal {
+main {
     text-align: center;
 }
 
-.contenido-principal .titulo {
-    padding-bottom: 22px;
-}
-
-.contenido-principal h2 {
+main h2 {
     font-size: 32px;
-    margin-bottom: 16px;
+    margin-bottom: 32px;
 }
 
 @media screen and (max-width: 768px) {
-    .contenido-principal h2 {
+    main h2 {
         font-size: 24px;
         margin-bottom: 8px;
     }

@@ -22,12 +22,12 @@ body {
     width: 100%;
 }
 
-.registro-contenedor .titulo {
+.registro-contenedor h2 {
     margin-bottom: 24px;
     text-align: center;
 }
 
-.formulario-registro {
+form {
     text-align: center;
 }
 
@@ -54,7 +54,7 @@ body {
     border-color: #ff9900;
 }
 
-.boton-registro {
+.enviar {
     background-color: #333;
     color: white;
     border: none;
@@ -64,7 +64,7 @@ body {
     transition: background-color 0.3s;
 }
 
-.boton-registro:hover {
+.enviar:hover {
     background-color: #ff9900;
 }
 

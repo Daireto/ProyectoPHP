@@ -22,12 +22,12 @@ body {
     width: 100%;
 }
 
-.login-contenedor .titulo {
+.login-contenedor h2 {
     margin-bottom: 24px;
     text-align: center;
 }
 
-.formulario-login {
+form {
     text-align: center;
 }
 
@@ -53,7 +53,7 @@ body {
     border-color: #ff9900;
 }
 
-.boton-login {
+.enviar {
     background-color: #333;
     color: white;
     border: none;
@@ -63,7 +63,7 @@ body {
     transition: background-color 0.3s;
 }
 
-.boton-login:hover {
+.enviar:hover {
     background-color: #ff9900;
 }
 
