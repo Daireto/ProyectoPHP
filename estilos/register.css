@@ -8,7 +8,7 @@ body {
 .registro {
     background-color: rgba(39, 39, 39, 0.342);
     backdrop-filter: blur(5px);
-    height: calc(100vh - 128px);
+    height: calc(100vh - 158px);
     display: flex;
     justify-content: center;
     align-items: center;
