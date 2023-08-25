@@ -93,7 +93,6 @@ main h2 {
 
 .contacto-contenedor {
     display: flex;
-    align-items: center;
     background-color: #e9e9e9;
 }
 
@@ -110,9 +109,17 @@ main h2 {
 
 .contenedor-formulario-contacto {
     flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contenedor-formulario-contacto h2 {
+    margin-top: 48px;
 }
 
 .formulario-contacto {
+    margin-bottom: 48px;
     max-width: 100%;
 }
 
@@ -149,6 +156,18 @@ main h2 {
 
 .enviar:hover {
     background-color: #ff9900;
+}
+
+.whatsapp-logo {
+    display: flex;
+    justify-content: end;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.whatsapp-logo img {
+    width: 60px;
+    height: 60px;
 }
 
 @media screen and (max-width: 768px) {
