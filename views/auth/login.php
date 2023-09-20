@@ -1,30 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parking Manager</title>
-
-    <!-- Ícono -->
-    <link rel="icon" href="imagenes/favicon.ico" type="image/x-icon">
+    <?php include "../layout/head.php" ?>
 
     <!-- Estilos -->
-    <link rel="stylesheet" href="estilos/base.css">
-    <link rel="stylesheet" href="estilos/login.css">
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/login.css">
 </head>
 
 <body>
     <!-- Barra de navegación -->
-    <nav class="navbar">
-        <a class="logo" href="index.html">
-            <img src="imagenes/logo.png" alt="Logo">
-        </a>
-        <ul class="menu">
-            <li class="item"><a href="index.html">Inicio</a></li>
-            <li class="item"><a href="login.html">Iniciar sesión</a></li>
-            <li class="item"><a href="register.html">Registrarse</a></li>
-        </ul>
-    </nav>
+    <?php include "../layout/nav.php" ?>
 
     <!-- Contenido principal -->
     <main>
@@ -48,8 +34,6 @@
     </main>
 
     <!-- Pié de página -->
-    <footer>
-        <p>&copy; 2023 Parking Manager. Todos los derechos reservados.</p>
-    </footer>
+    <?php include "../layout/footer.php" ?>
 </body>
 </html>

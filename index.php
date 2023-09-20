@@ -1,30 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parking Manager</title>
-
-    <!-- Ícono -->
-    <link rel="icon" href="imagenes/favicon.ico" type="image/x-icon">
+    <?php include "views/layout/head.php" ?>
 
     <!-- Estilos -->
-    <link rel="stylesheet" href="estilos/base.css">
-    <link rel="stylesheet" href="estilos/index.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/index.css">
 </head>
 
 <body>
     <!-- Barra de navegación -->
-    <nav>
-        <a class="logo" href="index.html">
-            <img src="imagenes/logo.png" alt="Logo">
-        </a>
-        <ul class="menu">
-            <li class="item"><a href="index.html">Inicio</a></li>
-            <li class="item"><a href="login.html">Iniciar sesión</a></li>
-            <li class="item"><a href="register.html">Registrarse</a></li>
-        </ul>
-    </nav>
+    <?php include "views/layout/nav.php" ?>
 
     <!-- Cabecera -->
     <header>
@@ -59,7 +45,7 @@
         <section class="contacto">
             <div class="contacto-contenedor">
                 <div class="contacto-imagen">
-                    <img src="imagenes/imagen-contacto.jpg" alt="Imagen del formulario de contacto">
+                    <img src="assets/img/imagen-contacto.jpg" alt="Imagen del formulario de contacto">
                 </div>
                 <div class="contenedor-formulario-contacto">
                     <h2>Contáctenos</h2>
@@ -83,7 +69,7 @@
                         <button type="submit" class="enviar">Enviar</button>
                     </form>
                     <a class="whatsapp-logo" href="https://chat.whatsapp.com/BmvUrR8aS3eC50xaFkg9Ry" target="_blank">
-                        <img src="imagenes/whatsapp.png" alt="Logo de WhatsApp">
+                        <img src="assets/img/whatsapp.png" alt="Logo de WhatsApp">
                     </a>
                 </div>
             </div>
@@ -91,8 +77,6 @@
     </main>
 
     <!-- Pié de página -->
-    <footer>
-        <p>&copy; 2023 Parking Manager. Todos los derechos reservados.</p>
-    </footer>
+    <?php include "views/layout/footer.php" ?>
 </body>
 </html>
