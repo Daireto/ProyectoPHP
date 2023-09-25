@@ -1,3 +1,5 @@
-<footer>
-    <p>&copy; 2023 Parking Manager. Todos los derechos reservados.</p>
-</footer>
+    <footer>
+        <p>&copy; 2023 Parking Manager. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

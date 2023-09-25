@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <?php include "../layout/head.php" ?>
-
-    <!-- Estilos -->
-    <link rel="stylesheet" href="../../assets/css/base.css">
+<?php include "../layout/header.php" ?>
     <link rel="stylesheet" href="../../assets/css/register.css">
 </head>
 
@@ -52,8 +46,4 @@
             </div>
         </section>
     </main>
-
-    <!-- Pié de página -->
-    <?php include "../layout/footer.php" ?>
-</body>
-</html>
+<?php include "../layout/footer.php" ?>
