@@ -1,5 +1,5 @@
 <?php include "views/layout/header.php" ?>
-    <link rel="stylesheet" href="assets/css/register.css">
+    <link rel="stylesheet" href="assets/css/auth/register.css">
 </head>
 
 <body>
@@ -12,7 +12,7 @@
         <section class="registro">
             <div class="registro-contenedor">
                 <h2>Registro</h2>
-                <form action="?action=register" method="post">
+                <form action="?form=register" method="post">
                     <div class="campo-formulario">
                         <label for="nombre">Nombre:</label>
                         <input type="text" id="nombre" name="nombre" required>

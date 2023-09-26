@@ -1,0 +1,82 @@
+/* Estilos del cuerpo de la página */
+body {
+    background-image: url("../../img/fondo-cabecera.jpg");
+    background-size: cover;
+}
+
+/* Estilos del formulario de registro */
+.registro {
+    background-color: rgba(39, 39, 39, 0.342);
+    backdrop-filter: blur(5px);
+    height: calc(100vh - 158px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registro-contenedor {
+    background-color: white;
+    border-radius: 8px;
+    padding: 32px;
+    max-width: 600px;
+    width: 100%;
+}
+
+.registro-contenedor h2 {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+form {
+    text-align: center;
+}
+
+.campo-error {
+    margin-bottom: 24px;
+    text-align: center;
+    color: rgb(204, 38, 38);
+}
+
+.campo-formulario {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.campo-formulario label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.campo-formulario input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+    width: 80%;
+}
+
+.campo-formulario input:focus {
+    border-color: #ff9900;
+}
+
+.enviar {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.enviar:hover {
+    background-color: #ff9900;
+}
+
+@media screen and (max-width: 768px) {
+    .registro-contenedor {
+        padding: 32px 0;
+        max-width: 500px;
+    }
+}

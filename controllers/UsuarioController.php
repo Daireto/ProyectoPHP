@@ -12,6 +12,11 @@ class UsuarioController
         $this->errors = null;
     }
 
+    public function listar()
+    {
+        return $this->model->listar();
+    }
+
     public function login()
     {
         $this->errors = null;

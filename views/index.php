@@ -43,7 +43,7 @@
                 </div>
                 <div class="contenedor-formulario-contacto">
                     <h2>Contáctenos</h2>
-                    <form class="formulario-contacto" action="?action=contacto" method="post">
+                    <form class="formulario-contacto" action="?form=contacto" method="post">
                         <div class="campo-formulario">
                             <label for="nombre">Nombre:</label>
                             <input type="text" id="nombre" name="nombre" required>

@@ -1,11 +1,11 @@
 /* Estilos del cuerpo de la página */
 body {
-    background-image: url("../img/fondo-cabecera.jpg");
+    background-image: url("../../img/fondo-cabecera.jpg");
     background-size: cover;
 }
 
-/* Estilos del formulario de login */
-.login {
+/* Estilos del contenedor del mensaje de error */
+.error {
     background-color: rgba(39, 39, 39, 0.342);
     backdrop-filter: blur(5px);
     height: calc(100vh - 158px);
@@ -14,52 +14,23 @@ body {
     align-items: center;
 }
 
-.login-contenedor {
+.error-contenedor {
     background-color: white;
     border-radius: 8px;
     padding: 32px;
     max-width: 400px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.login-contenedor h2 {
+.error-contenedor h2 {
     margin-bottom: 24px;
     text-align: center;
 }
 
-form {
-    text-align: center;
-}
-
-.campo-error {
-    margin-bottom: 24px;
-    text-align: center;
-    color: rgb(204, 38, 38);
-}
-
-.campo-formulario {
-    margin-bottom: 24px;
-    text-align: center;
-}
-
-.campo-formulario label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 8px;
-}
-
-.campo-formulario input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    transition: border-color 0.3s;
-}
-
-.campo-formulario input:focus {
-    border-color: #ff9900;
-}
-
-.enviar {
+.regresar {
     background-color: #333;
     color: white;
     border: none;
@@ -67,14 +38,15 @@ form {
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s;
+    text-decoration: none;
 }
 
-.enviar:hover {
+.regresar:hover {
     background-color: #ff9900;
 }
 
 @media screen and (max-width: 768px) {
-    .login-contenedor {
+    .error-contenedor {
         padding: 32px 0;
         max-width: 300px;
     }

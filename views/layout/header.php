@@ -7,4 +7,4 @@
 
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/layout/base.css">

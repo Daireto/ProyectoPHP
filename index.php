@@ -1,28 +1,43 @@
 <?php
 require_once 'controllers/UsuarioController.php';
 
-$userController = new UsuarioController();
-
+// Inicializar sesión
 session_start();
 
-// Inicializar variables
+// Controladores
+$userController = new UsuarioController();
 
+// Variables
 $url = 'index';
-$action = '';
+$form = '';
+unset($_GET['mensaje']);
 
 if (isset($_GET['url'])) {
     $url = $_GET['url'];
 }
 
-if (isset($_GET['action'])) {
-    $action = $_GET['action'];
+if (isset($_GET['form'])) {
+    $form = $_GET['form'];
 }
 
-// Acciones
+// Funciones
+function render($vista, $rol = null) {
+    if(isset($_SESSION['usuario'])) {
+        if($rol != null && (!isset($_SESSION['rol']) || $rol != $_SESSION['rol'])) {
+            $_GET['mensaje'] = 'Acceso no autorizado';
+            return render('views/error.php');
+        }
+        return $vista;
+    } else {
+        return 'views/auth/login.php';
+    }
+}
 
-switch ($action) {
+// Formularios
+switch ($form) {
     case 'login':
         $userController->login();
+        header('Location:'.'index.php');
         break;
 
     case 'register':
@@ -36,32 +51,21 @@ switch ($action) {
 }
 
 // Validar sesión del usuario
-
 if (!isset($_SESSION['usuario']) && ($url != 'login' && $url != 'register')) {
     $url = 'login';
 }
 
-function render($vista) {
-    if(isset($_SESSION['usuario'])) {
-        include $vista;
-    } else {
-        include 'views/auth/login.php';
-    }
-}
-
 // Rutas
-
 switch ($url) {
-    case 'logout':
-        session_destroy();
-        header('Location:'.'index.php?url=login');
+    case 'index':
+        include render('views/index.php');
         break;
 
     case 'login':
         if(!isset($_SESSION['usuario'])) {
             include 'views/auth/login.php';
         } else {
-            include 'views/main.php';
+            include 'views/index.php';
         }
         break;
 
@@ -69,35 +73,42 @@ switch ($url) {
         if(!isset($_SESSION['usuario'])) {
             include 'views/auth/register.php';
         } else {
-            include 'views/main.php';
+            include 'views/index.php';
         }
         break;
 
+    case 'logout':
+        session_destroy();
+        header('Location:'.'index.php?url=login');
+        break;
+
     case 'usuarios':
-        render('views/main.php');
+        $usuarios = $userController->listar();
+        include render('views/usuarios/lista.php');
         break;
 
     case 'mensajes':
-        render('views/main.php');
+        include render('views/index.php', 'admin');
         break;
 
     case 'ingresos':
-        render('views/main.php');
+        include render('views/index.php', 'admin');
         break;
 
     case 'salidas':
-        render('views/main.php');
+        include render('views/index.php', 'admin');
         break;
 
     case 'pagos':
-        render('views/main.php');
+        include render('views/index.php', 'admin');
         break;
 
     case 'perfil':
-        render('views/main.php');
+        include render('views/index.php');
         break;
 
     default:
-        render('views/main.php');
+        $_GET['mensaje'] = 'Página no encontrada';
+        include render('views/error.php');
         break;
 }

@@ -1,5 +1,5 @@
 <?php include "views/layout/header.php" ?>
-    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/auth/login.css">
 </head>
 
 <body>
@@ -17,7 +17,7 @@
                         <div class="campo-error"><?php echo $error ?></div>
                     <?php endforeach ?>
                 <?php endif ?>
-                <form action="?action=login" method="post">
+                <form action="?form=login" method="post">
                     <div class="campo-formulario">
                         <label for="usuario">Usuario:</label>
                         <input type="text" id="usuario" name="usuario" required>
