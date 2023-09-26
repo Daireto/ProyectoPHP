@@ -1,10 +1,26 @@
 <nav>
-    <a class="logo" href="/ProyectoPHP/index.php">
-        <img src="/ProyectoPHP/assets/img/logo.png" alt="Logo">
-    </a>
+    <div class="left-menu">
+        <a class="logo" href="?url=index">
+            <img src="assets/img/logo.png" alt="Logo">
+        </a>
+        <?php if (isset($_SESSION['usuario'])): ?>
+            <ul class="menu">
+                <li class="item"><a href="?url=usuarios">Usuarios</a></li>
+                <li class="item"><a href="?url=mensajes">Mensajes</a></li>
+                <li class="item"><a href="?url=ingresos">Ingresos</a></li>
+                <li class="item"><a href="?url=salidas">Salidas</a></li>
+                <li class="item"><a href="?url=pagos">Pagos</a></li>
+            </ul>
+        <?php endif ?>
+    </div>
     <ul class="menu">
-        <li class="item"><a href="/ProyectoPHP/index.php">Inicio</a></li>
-        <li class="item"><a href="/ProyectoPHP/views/auth/login.php">Iniciar sesión</a></li>
-        <li class="item"><a href="/ProyectoPHP/views/auth/register.php">Registrarse</a></li>
+        <?php if (!isset($_SESSION['usuario'])): ?>
+            <li class="item"><a href="?url=index">Inicio</a></li>
+            <li class="item"><a href="?url=login">Iniciar sesión</a></li>
+            <li class="item"><a href="?url=register">Registrarse</a></li>
+        <?php else: ?>
+            <li class="item"><a href="?url=perfil"><?php echo $_SESSION['usuario'] ?></a></li>
+            <li class="item"><a href="?url=logout">Cerrar sesión</a></li>
+        <?php endif ?>
     </ul>
 </nav>

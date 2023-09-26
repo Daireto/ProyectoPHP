@@ -5,6 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parking Manager</title>
 
-    <link rel="icon" href="/ProyectoPHP/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="/ProyectoPHP/assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/base.css">

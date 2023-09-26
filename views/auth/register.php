@@ -1,10 +1,10 @@
-<?php include "../layout/header.php" ?>
-    <link rel="stylesheet" href="../../assets/css/register.css">
+<?php include "views/layout/header.php" ?>
+    <link rel="stylesheet" href="assets/css/register.css">
 </head>
 
 <body>
     <!-- Barra de navegación -->
-    <?php include "../layout/nav.php" ?>
+    <?php include "views/layout/nav.php" ?>
 
     <!-- Contenido principal -->
     <main>
@@ -12,7 +12,7 @@
         <section class="registro">
             <div class="registro-contenedor">
                 <h2>Registro</h2>
-                <form action="#" method="post">
+                <form action="?action=register" method="post">
                     <div class="campo-formulario">
                         <label for="nombre">Nombre:</label>
                         <input type="text" id="nombre" name="nombre" required>
@@ -46,4 +46,4 @@
             </div>
         </section>
     </main>
-<?php include "../layout/footer.php" ?>
+<?php include "views/layout/footer.php" ?>

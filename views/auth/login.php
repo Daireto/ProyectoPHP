@@ -1,10 +1,10 @@
-<?php include "../layout/header.php" ?>
-    <link rel="stylesheet" href="../../assets/css/login.css">
+<?php include "views/layout/header.php" ?>
+    <link rel="stylesheet" href="assets/css/login.css">
 </head>
 
 <body>
     <!-- Barra de navegación -->
-    <?php include "../layout/nav.php" ?>
+    <?php include "views/layout/nav.php" ?>
 
     <!-- Contenido principal -->
     <main>
@@ -12,8 +12,12 @@
         <section class="login">
             <div class="login-contenedor">
                 <h2>Inicio de sesión</h2>
-                <!-- <form action="../../controllers/UsuarioController.php?page=login" method="post"> -->
-                <form action="" method="post">
+                <?php if (isset($userController->errors) && count($userController->errors) > 0): ?>
+                    <?php foreach ($userController->errors as $error): ?>
+                        <div class="campo-error"><?php echo $error ?></div>
+                    <?php endforeach ?>
+                <?php endif ?>
+                <form action="?action=login" method="post">
                     <div class="campo-formulario">
                         <label for="usuario">Usuario:</label>
                         <input type="text" id="usuario" name="usuario" required>
@@ -27,4 +31,4 @@
             </div>
         </section>
     </main>
-<?php include "../layout/footer.php" ?>
+<?php include "views/layout/footer.php" ?>

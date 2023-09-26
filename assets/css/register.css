@@ -31,6 +31,12 @@ form {
     text-align: center;
 }
 
+.campo-error {
+    margin-bottom: 24px;
+    text-align: center;
+    color: rgb(204, 38, 38);
+}
+
 .campo-formulario {
     margin-bottom: 24px;
     text-align: center;

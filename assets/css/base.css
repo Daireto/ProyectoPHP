@@ -20,7 +20,14 @@ nav {
     padding: 10px 16px;
 }
 
+.left-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .logo {
+    margin-right: 10px;
     height: 70px;
 }
 
@@ -52,10 +59,18 @@ nav {
         flex-direction: column;
     }
 
+    .left-menu {
+        flex-direction: column;
+    }
+
+    .logo {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
     .menu {
         flex-direction: column;
         text-align: center;
-        margin-top: 10px;
     }
 
     .menu .item {
