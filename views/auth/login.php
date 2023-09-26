@@ -12,12 +12,12 @@
         <section class="login">
             <div class="login-contenedor">
                 <h2>Inicio de sesión</h2>
-                <?php if (isset($userController->errors) && count($userController->errors) > 0): ?>
-                    <?php foreach ($userController->errors as $error): ?>
+                <?php if (isset($this->errors) && count($this->errors) > 0): ?>
+                    <?php foreach ($this->errors as $error): ?>
                         <div class="campo-error"><?php echo $error ?></div>
                     <?php endforeach ?>
                 <?php endif ?>
-                <form action="?form=login" method="post">
+                <form action="?url=login" method="post">
                     <div class="campo-formulario">
                         <label for="usuario">Usuario:</label>
                         <input type="text" id="usuario" name="usuario" required>

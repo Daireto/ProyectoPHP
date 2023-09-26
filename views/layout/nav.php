@@ -6,10 +6,10 @@
         <?php if (isset($_SESSION['usuario'])): ?>
             <ul class="menu">
                 <li class="item"><a href="?url=usuarios">Usuarios</a></li>
-                <li class="item"><a href="?url=mensajes">Mensajes</a></li>
                 <li class="item"><a href="?url=ingresos">Ingresos</a></li>
                 <li class="item"><a href="?url=salidas">Salidas</a></li>
                 <li class="item"><a href="?url=pagos">Pagos</a></li>
+                <li class="item"><a href="?url=mensajes">Mensajes</a></li>
             </ul>
         <?php endif ?>
     </div>

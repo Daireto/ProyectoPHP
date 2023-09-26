@@ -29,7 +29,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($userController->listar() as $usuario): ?>
+                        <?php foreach($this->listar() as $usuario): ?>
                             <tr>
                                 <td><?php echo $usuario['usuario'] ?></td>
                                 <td><?php echo $usuario['email'] ?></td>

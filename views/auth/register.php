@@ -12,7 +12,7 @@
         <section class="registro">
             <div class="registro-contenedor">
                 <h2>Registro</h2>
-                <form action="?form=register" method="post">
+                <form action="?url=register" method="post">
                     <div class="campo-formulario">
                         <label for="nombre">Nombre:</label>
                         <input type="text" id="nombre" name="nombre" required>
