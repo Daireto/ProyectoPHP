@@ -12,7 +12,7 @@
         <section class="error">
             <div class="error-contenedor">
                 <h2><?php echo $_GET['mensaje'] ?></h2>
-                <a class="regresar" href="?url=index">Regresar</a>
+                <a class="regresar" href="?url=principal">Regresar</a>
             </div>
         </section>
     </main>

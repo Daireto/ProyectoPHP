@@ -10,10 +10,10 @@ unset($_GET['mensaje']);
 $usuarioController = new UsuarioController();
 
 // Rutas
-$url = isset($_GET['url']) ? $_GET['url'] : 'index';
+$url = isset($_GET['url']) ? $_GET['url'] : 'principal';
 switch ($url) {
-    case 'index':
-        include 'views/index.php';
+    case 'principal':
+        include 'views/principal.php';
         break;
 
     case 'login':

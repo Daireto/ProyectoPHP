@@ -17,7 +17,6 @@ class UsuarioController
         $accion = isset($_GET['accion']) ? $_GET['accion'] : 'listar';
         switch ($accion) {
             case 'listar':
-                $this->listar();
                 include 'views/usuarios/lista.php';
                 break;
 
