@@ -66,7 +66,7 @@ table {
 
 th, td {
     text-align: center;
-    padding: 12px 0;
+    padding: 12px 10px;
     color: white;
 }
 
@@ -78,16 +78,19 @@ tr:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-.registro-opciones {
+.registro .opciones {
     display: flex;
-    justify-content: space-between;
-    padding: 12px 18px;
+    justify-content: end;
+    gap: 10px;
+    padding-left: 6px;
+    padding-right: 6px;
 }
 
-.registro-opciones a {
+.registro .opciones a {
     display: inline-block;
     padding: 10px 20px;
     color: black;
+    font-size: 16px;
     text-decoration: none;
     border-radius: 5px;
     cursor: pointer;
@@ -95,30 +98,69 @@ tr:hover {
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-.registro-opciones a:hover {
+.registro .opciones a:hover {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-.registro-opciones a.ver {
+.registro .opciones a.ver {
     background-color: #fff7ac;
 }
 
-.registro-opciones a.editar {
+.registro .opciones a.editar {
     background-color: #ffc400;
 }
 
-.registro-opciones a.eliminar {
+.registro .opciones a.eliminar {
     background-color: #ff5100;
 }
 
-.registro-opciones a.ver:hover {
+.registro .opciones a.ver:hover {
     background-color: #bbb477;
 }
 
-.registro-opciones a.editar:hover {
+.registro .opciones a.editar:hover {
     background-color: #ca9b00;
 }
 
-.registro-opciones a.eliminar:hover {
+.registro .opciones a.eliminar:hover {
     background-color: #c43e00;
+}
+
+@media screen and (max-width: 1520px) {
+    .registro .opciones a {
+        padding: 10px 10px;
+    }
+}
+
+@media screen and (max-width: 1270px) {
+    .registro .opciones {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .registro .opciones a {
+        padding: 5px 0;
+        width: 55px;
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    .nombre-columna:nth-child(n + 3) {
+        display: none;
+    }
+
+    .registro .campo:nth-child(n + 3) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .registro .campo {
+        text-align: left;
+    }
+
+    .registro .opciones {
+        align-items: end;
+    }
 }

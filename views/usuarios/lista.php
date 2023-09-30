@@ -20,23 +20,23 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Usuario</th>
-                            <th>Correo electrónico</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Cédula</th>
-                            <th>Opciones</th>
+                            <th class="nombre-columna">Usuario</th>
+                            <th class="nombre-columna">Correo electrónico</th>
+                            <th class="nombre-columna">Nombre</th>
+                            <th class="nombre-columna">Apellido</th>
+                            <th class="nombre-columna">Cédula</th>
+                            <th class="columna-opciones">Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach($this->listar() as $usuario): ?>
-                            <tr>
-                                <td><?php echo $usuario['usuario'] ?></td>
-                                <td><?php echo $usuario['email'] ?></td>
-                                <td><?php echo $usuario['nombre'] ?></td>
-                                <td><?php echo $usuario['apellido'] ?></td>
-                                <td><?php echo $usuario['cedula'] ?></td>
-                                <td class="registro-opciones">
+                            <tr class="registro">
+                                <td class="campo"><?php echo $usuario['usuario'] ?></td>
+                                <td class="campo"><?php echo $usuario['email'] ?></td>
+                                <td class="campo"><?php echo $usuario['nombre'] ?></td>
+                                <td class="campo"><?php echo $usuario['apellido'] ?></td>
+                                <td class="campo"><?php echo $usuario['cedula'] ?></td>
+                                <td class="opciones">
                                     <a class="ver" href="#">Ver</a>
                                     <a class="editar" href="#">Editar</a>
                                     <a class="eliminar" href="#">Eliminar</a>

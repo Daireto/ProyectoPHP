@@ -12,7 +12,8 @@ class UsuarioController
         $this->errors = null;
     }
 
-    public function ejecutar() {
+    public function ejecutar()
+    {
         validar_sesion();
         $accion = isset($_GET['accion']) ? $_GET['accion'] : 'listar';
         switch ($accion) {
@@ -46,7 +47,7 @@ class UsuarioController
 
     public function login()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['usuario']) && isset($_POST['password'])) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('usuario', 'password')) {
             $registro = $this->model->login($_POST['usuario'], $_POST['password']);
             if (isset($registro)) {
                 unset($_SESSION['usuario']);
@@ -63,11 +64,26 @@ class UsuarioController
 
     public function register()
     {
-        $this->errors = null;
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['usuario'])) {
-            $_SESSION['usuario'] = $_POST['usuario'];
-            header('Location:' . 'index.php');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('nombre', 'apellido', 'cedula', 'usuario', 'email', 'password', 'confirm-password')) {
+            if ($_POST['password'] == $_POST['confirm-password']) {
+                $this->model->setNombre($_POST['nombre']);
+                $this->model->setApellido($_POST['apellido']);
+                $this->model->setCedula($_POST['cedula']);
+                $this->model->setUsuario($_POST['usuario']);
+                $this->model->setEmail($_POST['email']);
+                $this->model->setPassword($_POST['password']);
+                $registro = $this->model->guardar();
+                if (isset($registro)) {
+                    unset($_SESSION['usuario']);
+                    $_SESSION['usuario'] = $registro['usuario'];
+                    $this->errors = null;
+                    header('Location:' . 'index.php');
+                } else {
+                    $this->errors = array('No se pudo realizar el registro');
+                }
+            } else {
+                $this->errors = array('La contraseña y la confirmación no coinciden');
+            }
         }
 
         include 'views/auth/register.php';
