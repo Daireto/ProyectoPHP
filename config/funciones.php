@@ -1,9 +1,18 @@
 <?php
 
+// Verifica que el usuario tenga un rol determinado
+function validar_rol($rol)
+{
+    return isset($_SESSION['rol']) && $_SESSION['rol'] == $rol;
+}
+
 // Verifica que el usuario esté autenticado
-function validar_sesion()
+function validar_sesion($rol = null)
 {
     if (!isset($_SESSION['usuario'])) {
+        header('Location:' . 'index.php?url=no-autorizado');
+    }
+    if ($rol != null && !validar_rol($rol)) {
         header('Location:' . 'index.php?url=no-autorizado');
     }
 }

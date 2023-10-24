@@ -16,7 +16,7 @@ class UsuarioController
 
     public function ejecutar()
     {
-        validar_sesion();
+        validar_sesion('Admin');
         $accion = isset($_GET['accion']) ? $_GET['accion'] : 'listar';
         switch ($accion) {
             case 'listar':
@@ -131,6 +131,7 @@ class UsuarioController
             if (isset($registro)) {
                 unset($_SESSION['usuario']);
                 $_SESSION['usuario'] = $registro['usuario'];
+                $_SESSION['rol'] = $registro['rol'];
                 $this->errors = null;
                 header('Location:' . 'index.php');
             } else {
@@ -155,6 +156,7 @@ class UsuarioController
                 if (isset($registro)) {
                     unset($_SESSION['usuario']);
                     $_SESSION['usuario'] = $registro['usuario'];
+                    $_SESSION['rol'] = $registro['rol'];
                     $this->errors = null;
                     header('Location:' . 'index.php');
                 } else {

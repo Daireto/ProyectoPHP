@@ -3,7 +3,7 @@
         <a class="logo" href="?url=principal">
             <img src="assets/img/logo.png" alt="Logo">
         </a>
-        <?php if (isset($_SESSION['usuario'])): ?>
+        <?php if (isset($_SESSION['usuario']) && validar_rol('Admin')): ?>
             <ul class="menu">
                 <li class="item"><a href="?url=usuarios">Usuarios</a></li>
             </ul>

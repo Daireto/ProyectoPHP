@@ -3,6 +3,8 @@ require_once 'config/db.php';
 
 class Usuario
 {
+    private $db;
+
     private $nombre;
     private $apellido;
     private $cedula;
@@ -10,6 +12,10 @@ class Usuario
     private $email;
     private $password;
     private $rol;
+
+    public function __construct(){
+        // $this->db = Database::connect();
+    }
 
     public function listar()
     {
@@ -52,7 +58,7 @@ class Usuario
             'nombre' => $this->getNombre(),
             'apellido' => $this->getApellido(),
             'cedula' => $this->getCedula(),
-            'password' => $this->getPassword()
+            'rol' => $this->getRol()
         );
     }
 
@@ -77,37 +83,37 @@ class Usuario
 
     public function setNombre($nombre)
     {
-        $this->nombre = $nombre;
+        $this->nombre = $this->db->real_escape_string($nombre);
     }
 
     public function setApellido($apellido)
     {
-        $this->apellido = $apellido;
+        $this->apellido = $this->db->real_escape_string($apellido);
     }
 
     public function setCedula($cedula)
     {
-        $this->cedula = $cedula;
+        $this->cedula = $this->db->real_escape_string($cedula);
     }
 
     public function setUsuario($usuario)
     {
-        $this->usuario = $usuario;
+        $this->usuario = $this->db->real_escape_string($usuario);
     }
 
     public function setEmail($email)
     {
-        $this->email = $email;
+        $this->email = $this->db->real_escape_string($email);
     }
 
     public function setPassword($password)
     {
-        $this->password = $password;
+        $this->password = $this->db->real_escape_string($password);
     }
 
     public function setRol($rol)
     {
-        $this->rol = $rol;
+        $this->rol = $this->db->real_escape_string($rol);
     }
 
     // Getters
