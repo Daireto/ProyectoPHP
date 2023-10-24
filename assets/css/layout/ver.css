@@ -1,0 +1,101 @@
+/* Estilos del cuerpo de la página */
+body {
+    background-image: url("../../img/fondo-cabecera.jpg");
+    background-size: cover;
+}
+
+/* Estilos de la vista de ver registro */
+.ver {
+    background-color: rgba(39, 39, 39, 0.562);
+    backdrop-filter: blur(5px);
+    min-height: calc(100vh - 158px);
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 30px;
+}
+
+.ver-contenedor {
+    background-color: rgba(105, 105, 105, 0);
+    padding: 12px;
+    width: 100%;
+    color: white;
+}
+
+.ver-encabezado {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 22px;
+}
+
+.ver-encabezado h2 {
+    font-size: 28px;
+}
+
+.ver-opciones {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+
+.ver-opciones a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ffc400;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.ver-opciones a:hover {
+    background-color: #b39800;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.ver-opciones a.regresar {
+    background-color: #fff7ac;
+}
+
+.ver-opciones a.editar {
+    background-color: #ffc400;
+}
+
+.ver-opciones a.eliminar {
+    background-color: #ff5100;
+}
+
+.ver-opciones a.regresar:hover {
+    background-color: #bbb477;
+}
+
+.ver-opciones a.editar:hover {
+    background-color: #ca9b00;
+}
+
+.ver-opciones a.eliminar:hover {
+    background-color: #c43e00;
+}
+
+.ver-contenido {
+    border-radius: 15px;
+    background-color: rgba(105, 105, 105, 0.61);
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px 0px;
+}
+
+.ver-campo {
+    width: 50%;
+    text-align: center;
+}
+
+.campo-etiqueta {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}

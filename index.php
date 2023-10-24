@@ -38,6 +38,11 @@ switch ($url) {
         include 'views/error.php';
         break;
 
+    case 'error':
+        $_GET['mensaje'] = isset($_GET['texto']) ? $_GET['texto'] : 'Ha ocurrido un error desconocido';
+        include 'views/error.php';
+        break;
+
     default:
         $_GET['mensaje'] = 'Página no encontrada';
         include 'views/error.php';

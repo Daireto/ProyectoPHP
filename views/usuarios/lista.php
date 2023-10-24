@@ -14,7 +14,7 @@
                 <div class="lista-encabezado">
                     <h2>Usuarios</h2>
                     <div class="lista-opciones">
-                        <a href="#">Crear usuario</a>
+                        <a href="?url=usuarios&accion=crear">Crear usuario</a>
                     </div>
                 </div>
                 <table>
@@ -29,7 +29,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($this->listar() as $usuario): ?>
+                        <?php foreach($this->usuarios as $usuario): ?>
                             <tr class="registro">
                                 <td class="campo"><?php echo $usuario['usuario'] ?></td>
                                 <td class="campo"><?php echo $usuario['email'] ?></td>
@@ -37,9 +37,9 @@
                                 <td class="campo"><?php echo $usuario['apellido'] ?></td>
                                 <td class="campo"><?php echo $usuario['cedula'] ?></td>
                                 <td class="opciones">
-                                    <a class="ver" href="#">Ver</a>
-                                    <a class="editar" href="#">Editar</a>
-                                    <a class="eliminar" href="#">Eliminar</a>
+                                    <a class="ver" href="?url=usuarios&accion=ver&id=<?php echo $usuario['cedula'] ?>">Ver</a>
+                                    <a class="editar" href="?url=usuarios&accion=editar&id=<?php echo $usuario['cedula'] ?>">Editar</a>
+                                    <a class="eliminar" href="?url=usuarios&accion=eliminar&id=<?php echo $usuario['cedula'] ?>">Eliminar</a>
                                 </td>
                             </tr>
                         <?php endforeach ?>

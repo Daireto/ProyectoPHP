@@ -38,3 +38,9 @@ function mostrar_campo($campo)
 {
     echo isset($_POST[$campo]) ? $_POST[$campo] : null;
 }
+
+// Mostrar la página de error con un mensaje especifico
+function mostrar_error($mensaje)
+{
+    header('Location:' . 'index.php?url=error&texto='.$mensaje);
+}
