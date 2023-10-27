@@ -8,7 +8,6 @@
 
     <!-- Contenido principal -->
     <main>
-        <!-- Formulario de inicio de sesión -->
         <section class="error">
             <div class="error-contenedor">
                 <h2><?php echo $_GET['mensaje'] ?></h2>

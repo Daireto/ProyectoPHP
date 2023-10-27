@@ -8,15 +8,14 @@
 
     <!-- Contenido principal -->
     <main>
-        <!-- Datos del usuario -->
         <section class="ver">
             <div class="ver-contenedor">
                 <div class="ver-encabezado">
                     <h2>Ver usuario</h2>
                     <div class="ver-opciones">
-                        <a class="regresar" href="?url=usuarios">Regresar</a>
-                        <a class="editar" href="?url=usuarios&accion=editar&id=<?php echo $this->usuario['cedula'] ?>">Editar</a>
-                        <a class="eliminar" href="?url=usuarios&accion=eliminar&id=<?php echo $this->usuario['cedula'] ?>">Eliminar</a>
+                        <button class="regresar"><a href="?url=usuarios">Regresar</a></button>
+                        <button class="editar"><a href="?url=usuarios&accion=editar&id=<?php echo $this->usuario['cedula'] ?>">Editar</a></button>
+                        <button class="eliminar"><a href="?url=usuarios&accion=eliminar&id=<?php echo $this->usuario['cedula'] ?>">Eliminar</a></button>
                     </div>
                 </div>
                 <div class="ver-contenido">
@@ -43,6 +42,14 @@
                     <div class="ver-campo">
                         <div class="campo-etiqueta">Rol</div>
                         <div class="campo-valor"><?php echo $this->usuario['rol'] ?></div>
+                    </div>
+                    <div class="ver-campo">
+                        <div class="campo-etiqueta">Fecha de creación</div>
+                        <div class="campo-valor"><?php echo $this->usuario['fecha_creacion'] ?></div>
+                    </div>
+                    <div class="ver-campo">
+                        <div class="campo-etiqueta">Fecha de actualización</div>
+                        <div class="campo-valor"><?php echo $this->usuario['fecha_actualizacion'] ?></div>
                     </div>
                 </div>
             </div>

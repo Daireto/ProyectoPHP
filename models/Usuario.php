@@ -12,29 +12,45 @@ class Usuario
     private $email;
     private $password;
     private $rol;
+    private $fecha_creacion;
+    private $fecha_actualizacion;
 
-    public function __construct(){
-        // $this->db = Database::connect();
+    public function __construct()
+    {
+        $this->db = Database::connect();
     }
 
-    public function listar()
+    public function contar()
     {
-        return array(
-            array('usuario' => 'john.doe', 'email' => 'john.doe@example.com', 'nombre' => 'John', 'apellido' => 'Doe', 'cedula' => '123456789', 'password' => 'john.doe', 'rol' => 'Usuario'),
-            array('usuario' => 'jane.doe', 'email' => 'jane.doe@example.com', 'nombre' => 'Jane', 'apellido' => 'Doe', 'cedula' => '987654321', 'password' => 'jane.doe', 'rol' => 'Usuario'),
-            array('usuario' => 'michael.smith', 'email' => 'michael.smith@example.com', 'nombre' => 'Michael', 'apellido' => 'Smith', 'cedula' => '555555555', 'password' => 'michael.smith', 'rol' => 'Usuario'),
-            array('usuario' => 'susan.johnson', 'email' => 'susan.johnson@example.com', 'nombre' => 'Susan', 'apellido' => 'Johnson', 'cedula' => '666666666', 'password' => 'susan.johnson', 'rol' => 'Usuario'),
-            array('usuario' => 'david.wilson', 'email' => 'david.wilson@example.com', 'nombre' => 'David', 'apellido' => 'Wilson', 'cedula' => '777777777', 'password' => 'david.wilson', 'rol' => 'Usuario'),
-            array('usuario' => 'admin', 'email' => 'admin@example.com', 'nombre' => 'Admin', 'apellido' => 'Admin', 'cedula' => '100000000', 'password' => 'admin', 'rol' => 'Admin'),
-        );
+        $sql = "SELECT COUNT(cedula) as total FROM usuarios";
+        $resultado = $this->db->query($sql);
+        $total = $resultado->fetch_assoc()['total'];
+        $resultado->free();
+        return $total;
+    }
+
+    public function listar($page = 1, $cantidadPorPagina = 8)
+    {
+        $page = ($page - 1) * $cantidadPorPagina;
+        $sql = "SELECT * FROM usuarios ORDER BY rol ASC, fecha_creacion DESC LIMIT {$cantidadPorPagina} OFFSET {$page}";
+        $resultado = $this->db->query($sql);
+        if ($resultado->num_rows > 0) {
+            $usuarios = $resultado->fetch_all(MYSQLI_ASSOC);
+            $resultado->free_result();
+            return $usuarios;
+        }
+        return array();
     }
 
     public function login($usuario, $password)
     {
-        foreach ($this->listar() as $registro) {
-            // if ($registro['usuario'] == $usuario && password_verify($registro['password'], $password)) {
-            if ($registro['usuario'] == $usuario && $registro['password'] == $password) {
-                return $registro;
+        $sql = "SELECT * FROM usuarios WHERE usuario = '{$usuario}'";
+        $resultado = $this->db->query($sql);
+        if ($resultado->num_rows > 0) {
+            $usuario = $resultado->fetch_assoc();
+            $resultado->close();
+            if (password_verify($password, $usuario['password'])) {
+                return $usuario;
             }
         }
         return null;
@@ -42,41 +58,40 @@ class Usuario
 
     public function consultar($id)
     {
-        foreach ($this->listar() as $registro) {
-            if ($registro['cedula'] == $id) {
-                return $registro;
-            }
+        $sql = "SELECT * FROM usuarios WHERE cedula = {$id}";
+        $resultado = $this->db->query($sql);
+        if ($resultado->num_rows > 0) {
+            $usuario = $resultado->fetch_assoc();
+            $resultado->close();
+            return $usuario;
         }
         return null;
     }
 
     public function guardar()
     {
-        return array(
-            'usuario' => $this->getUsuario(),
-            'email' => $this->getEmail(),
-            'nombre' => $this->getNombre(),
-            'apellido' => $this->getApellido(),
-            'cedula' => $this->getCedula(),
-            'rol' => $this->getRol()
-        );
+        $sql = "INSERT INTO usuarios (cedula, usuario, nombre, apellido, email, password, rol)
+            VALUES ({$this->getCedula()}, '{$this->getUsuario()}', '{$this->getNombre()}', '{$this->getApellido()}', '{$this->getEmail()}', '{$this->getPassword()}', '{$this->getRol()}')";
+
+        return $this->db->query($sql);
     }
 
     public function editar($id)
     {
-        $this->getNombre();
-        $this->getApellido();
-        $this->getCedula();
-        $this->getUsuario();
-        $this->getEmail();
-        $this->getPassword();
-        $this->getRol();
-        return null;
+
+        $sql = "UPDATE usuarios
+            SET cedula = {$this->getCedula()}, usuario = '{$this->getUsuario()}', nombre = '{$this->getNombre()}', apellido = '{$this->getApellido()}', email = '{$this->getEmail()}', rol = '{$this->getRol()}'
+            WHERE cedula = {$id}";
+
+        return $this->db->query($sql);
     }
 
     public function eliminar($id)
     {
-        return true;
+        $sql = "DELETE FROM usuarios
+            WHERE cedula = {$id}";
+
+        return $this->db->query($sql);
     }
 
     // Setters
@@ -151,5 +166,15 @@ class Usuario
     public function getRol()
     {
         return trim($this->rol);
+    }
+
+    public function getFechaDeCreacion()
+    {
+        return trim($this->fecha_creacion);
+    }
+
+    public function getFechaDeActualizacion()
+    {
+        return trim($this->fecha_actualizacion);
     }
 }

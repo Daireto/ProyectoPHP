@@ -8,7 +8,6 @@
 
     <!-- Contenido principal -->
     <main>
-        <!-- Formulario de inicio de sesión -->
         <section class="login">
             <div class="login-contenedor">
                 <h2>Inicio de sesión</h2>

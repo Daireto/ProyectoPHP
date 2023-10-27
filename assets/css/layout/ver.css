@@ -8,7 +8,7 @@ body {
 .ver {
     background-color: rgba(39, 39, 39, 0.562);
     backdrop-filter: blur(5px);
-    min-height: calc(100vh - 158px);
+    min-height: calc(100vh - 218px);
     display: flex;
     justify-content: center;
     align-items: start;
@@ -38,44 +38,49 @@ body {
     gap: 10px;
 }
 
-.ver-opciones a {
+.ver-opciones button {
     display: inline-block;
-    padding: 10px 20px;
     background-color: #ffc400;
-    color: black;
-    text-decoration: none;
     border-radius: 5px;
     cursor: pointer;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s, box-shadow 0.3s;
+    padding: 0;
 }
 
-.ver-opciones a:hover {
+.ver-opciones button a {
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.ver-opciones button:hover {
     background-color: #b39800;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-.ver-opciones a.regresar {
+.ver-opciones button.regresar {
     background-color: #fff7ac;
 }
 
-.ver-opciones a.editar {
+.ver-opciones button.editar {
     background-color: #ffc400;
 }
 
-.ver-opciones a.eliminar {
+.ver-opciones button.eliminar {
     background-color: #ff5100;
 }
 
-.ver-opciones a.regresar:hover {
+.ver-opciones button.regresar:hover {
     background-color: #bbb477;
 }
 
-.ver-opciones a.editar:hover {
+.ver-opciones button.editar:hover {
     background-color: #ca9b00;
 }
 
-.ver-opciones a.eliminar:hover {
+.ver-opciones button.eliminar:hover {
     background-color: #c43e00;
 }
 

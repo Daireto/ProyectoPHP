@@ -8,7 +8,6 @@
 
     <!-- Contenido principal -->
     <main>
-        <!-- Lista de usuarios -->
         <section class="lista">
             <div class="lista-contenedor">
                 <div class="lista-encabezado">
@@ -25,10 +24,16 @@
                             <th class="nombre-columna">Nombre</th>
                             <th class="nombre-columna">Apellido</th>
                             <th class="nombre-columna">Cédula</th>
+                            <th class="nombre-columna">Rol</th>
                             <th class="columna-opciones">Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php if (count($this->usuarios) == 0): ?>
+                            <tr class="registro">
+                                <td class="campo" colspan="6">No se encontró ningún usuario</td>
+                            </tr>
+                        <?php endif ?>
                         <?php foreach($this->usuarios as $usuario): ?>
                             <tr class="registro">
                                 <td class="campo"><?php echo $usuario['usuario'] ?></td>
@@ -36,6 +41,7 @@
                                 <td class="campo"><?php echo $usuario['nombre'] ?></td>
                                 <td class="campo"><?php echo $usuario['apellido'] ?></td>
                                 <td class="campo"><?php echo $usuario['cedula'] ?></td>
+                                <td class="campo"><?php echo $usuario['rol'] ?></td>
                                 <td class="opciones">
                                     <a class="ver" href="?url=usuarios&accion=ver&id=<?php echo $usuario['cedula'] ?>">Ver</a>
                                     <a class="editar" href="?url=usuarios&accion=editar&id=<?php echo $usuario['cedula'] ?>">Editar</a>
@@ -45,6 +51,26 @@
                         <?php endforeach ?>
                     </tbody>
                 </table>
+                <?php if ($this->cantidadUsuarios > $this->cantidadPorPagina): ?>
+                    <div class="paginacion">
+                        <div class="cantidad-registros">
+                            <?php
+                                $inicio = isset($_GET['page']) ? ($_GET['page'] - 1) * $this->cantidadPorPagina : 0;
+                                $final = $inicio + count($this->usuarios);
+                                $rango = "Mostrando ".($inicio+1)."-".$final." usuarios";
+                            ?>
+                            <span><?php echo $rango ?></span>
+                        </div>
+                        <div class="opciones">
+                            <?php if (isset($_GET['page']) && $_GET['page'] > 1): ?>
+                                <a href="?url=usuarios&page=<?php echo isset($_GET['page']) ? $_GET['page'] - 1 : 1 ?>">Anterior</a>
+                            <?php endif ?>
+                            <?php if (isset($_GET['page']) ? $_GET['page'] < $_GET['pages'] : true): ?>
+                                <a href="?url=usuarios&page=<?php echo isset($_GET['page']) ? $_GET['page'] + 1 : 2 ?>">Siguiente</a>
+                            <?php endif ?>
+                        </div>
+                    </div>
+                <?php endif ?>
             </div>
         </section>
     </main>

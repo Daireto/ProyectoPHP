@@ -1,0 +1,99 @@
+/* Estilos del cuerpo de la página */
+body {
+    background-image: url("../../img/fondo-cabecera.jpg");
+    background-size: cover;
+}
+
+/* Estilos de la vista de eliminar registro */
+.eliminar {
+    background-color: rgba(39, 39, 39, 0.562);
+    backdrop-filter: blur(5px);
+    min-height: calc(100vh - 218px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.eliminar-contenedor {
+    background-color: rgba(105, 105, 105, 0.596);
+    border-radius: 8px;
+    padding: 32px;
+    max-width: 400px;
+    width: 100%;
+    color: white;
+}
+
+.eliminar-contenedor h2 {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.texto-confirmar {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.texto-advertencia {
+    text-align: center;
+    color: darkorange;
+    margin-bottom: 20px;
+}
+
+#id-registro {
+    font-weight: bold;
+    color: rgb(255, 120, 58);
+}
+
+form {
+    text-align: center;
+}
+
+.opciones-formulario {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+
+.opciones-formulario button {
+    display: inline-block;
+    color: black;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: black;
+    padding: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.opciones-formulario button:hover {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.opciones-formulario button.submit {
+    padding: 10px;
+    background-color: #ff5100;
+}
+
+.opciones-formulario button.cancelar {
+    background-color: #fff7ac;
+}
+
+.opciones-formulario button.submit:hover {
+    background-color: #c43e00;
+}
+
+.opciones-formulario button.cancelar:hover {
+    background-color: #bbb477;
+}
+
+
+@media screen and (max-width: 768px) {
+    .eliminar-contenedor {
+        padding: 32px 0;
+        max-width: 300px;
+    }
+}

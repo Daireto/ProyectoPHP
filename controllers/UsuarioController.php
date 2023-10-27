@@ -7,11 +7,17 @@ class UsuarioController
     public $errors;
     public $usuario;
     public $usuarios;
+    public $cantidadUsuarios;
+    public $cantidadPorPagina;
+    public $roles;
 
     public function __construct()
     {
         $this->model = new Usuario();
         $this->errors = null;
+        $this->cantidadUsuarios = 0;
+        $this->cantidadPorPagina = 8;
+        $this->roles = array('Usuario', 'Admin');
     }
 
     public function ejecutar()
@@ -20,28 +26,23 @@ class UsuarioController
         $accion = isset($_GET['accion']) ? $_GET['accion'] : 'listar';
         switch ($accion) {
             case 'listar':
-                $this->usuarios = $this->listar();
-                include 'views/usuarios/lista.php';
+                $this->listar();
                 break;
 
             case 'crear':
-                $this->usuario = $this->crear();
-                include 'views/usuarios/crear.php';
+                $this->crear();
                 break;
 
             case 'ver':
-                $this->usuario = $this->consultar();
-                include 'views/usuarios/ver.php';
+                $this->ver();
                 break;
 
             case 'editar':
-                $this->usuario = $this->editar();
-                include 'views/usuarios/editar.php';
+                $this->editar();
                 break;
 
             case 'eliminar':
                 $this->eliminar();
-                include 'views/usuarios/eliminar.php';
                 break;
 
             default:
@@ -53,7 +54,11 @@ class UsuarioController
 
     public function listar()
     {
-        return $this->model->listar();
+        $page = isset($_GET['page']) ? $_GET['page'] : 1;
+        $this->cantidadUsuarios = $this->model->contar();
+        $this->usuarios = $this->model->listar($page, $this->cantidadPorPagina);
+        $_GET['pages'] = ceil($this->cantidadUsuarios / $this->cantidadPorPagina);
+        include 'views/usuarios/lista.php';
     }
 
     public function consultar()
@@ -67,19 +72,25 @@ class UsuarioController
         mostrar_error('Usuario no encontrado');
     }
 
+    public function ver()
+    {
+        $this->usuario = $this->consultar();
+        include 'views/usuarios/ver.php';
+    }
+
     public function crear()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('nombre', 'apellido', 'cedula', 'usuario', 'email',  'rol', 'password', 'confirm-password')) {
+            $this->model->setNombre($_POST['nombre']);
+            $this->model->setApellido($_POST['apellido']);
+            $this->model->setCedula($_POST['cedula']);
+            $this->model->setUsuario($_POST['usuario']);
+            $this->model->setEmail($_POST['email']);
+            $this->model->setPassword($_POST['password']);
+            $this->model->setRol($_POST['rol']);
             if ($_POST['password'] == $_POST['confirm-password']) {
-                $this->model->setNombre($_POST['nombre']);
-                $this->model->setApellido($_POST['apellido']);
-                $this->model->setCedula($_POST['cedula']);
-                $this->model->setUsuario($_POST['usuario']);
-                $this->model->setEmail($_POST['email']);
-                $this->model->setPassword($_POST['password']);
-                $this->model->setRol($_POST['rol']);
-                $registro = $this->model->guardar();
-                if (isset($registro)) {
+                $resultado = $this->model->guardar();
+                if ($resultado) {
                     header('Location:' . 'index.php?url=usuarios&accion=ver&id=' . $this->model->getCedula());
                 } else {
                     $this->errors = array('No se pudo crear el usuario');
@@ -93,7 +104,7 @@ class UsuarioController
 
     public function editar()
     {
-        $this->consultar();
+        $this->usuario = $this->consultar();
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('nombre', 'apellido', 'cedula', 'usuario', 'email',  'rol')) {
             $this->model->setNombre($_POST['nombre']);
             $this->model->setApellido($_POST['apellido']);
@@ -101,8 +112,8 @@ class UsuarioController
             $this->model->setUsuario($_POST['usuario']);
             $this->model->setEmail($_POST['email']);
             $this->model->setRol($_POST['rol']);
-            $registro = $this->model->editar($_GET['id']);
-            if (isset($registro)) {
+            $resultado = $this->model->editar($_GET['id']);
+            if ($resultado) {
                 header('Location:' . 'index.php?url=usuarios&accion=ver&id=' . $this->model->getCedula());
             } else {
                 $this->errors = array('No se pudo editar el usuario');
@@ -113,9 +124,10 @@ class UsuarioController
 
     public function eliminar()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->consultar();
-            if ($this->model->eliminar($_GET['id'])) {
+        $this->usuario = $this->consultar();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('id')) {
+            $resultado = $this->model->eliminar($_POST['id']);
+            if ($resultado) {
                 header('Location:' . 'index.php?url=usuarios');
             } else {
                 $this->errors = array('No se pudo eliminar el usuario');
@@ -144,14 +156,14 @@ class UsuarioController
     public function register()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('nombre', 'apellido', 'cedula', 'usuario', 'email', 'password', 'confirm-password')) {
+            $this->model->setNombre($_POST['nombre']);
+            $this->model->setApellido($_POST['apellido']);
+            $this->model->setCedula($_POST['cedula']);
+            $this->model->setUsuario($_POST['usuario']);
+            $this->model->setEmail($_POST['email']);
+            $this->model->setPassword($_POST['password']);
+            $this->model->setRol('Usuario');
             if ($_POST['password'] == $_POST['confirm-password']) {
-                $this->model->setNombre($_POST['nombre']);
-                $this->model->setApellido($_POST['apellido']);
-                $this->model->setCedula($_POST['cedula']);
-                $this->model->setUsuario($_POST['usuario']);
-                $this->model->setEmail($_POST['email']);
-                $this->model->setPassword($_POST['password']);
-                $this->model->setRol('Usuario');
                 $registro = $this->model->guardar();
                 if (isset($registro)) {
                     unset($_SESSION['usuario']);
