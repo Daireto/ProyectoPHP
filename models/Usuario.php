@@ -20,15 +20,6 @@ class Usuario
         $this->db = Database::connect();
     }
 
-    public function contar()
-    {
-        $sql = "SELECT COUNT(cedula) as total FROM usuarios";
-        $resultado = $this->db->query($sql);
-        $total = $resultado->fetch_assoc()['total'];
-        $resultado->free();
-        return $total;
-    }
-
     public function listar($page = 1, $cantidadPorPagina = 8)
     {
         $page = ($page - 1) * $cantidadPorPagina;
@@ -42,23 +33,9 @@ class Usuario
         return array();
     }
 
-    public function login($usuario, $password)
-    {
-        $sql = "SELECT * FROM usuarios WHERE usuario = '{$usuario}'";
-        $resultado = $this->db->query($sql);
-        if ($resultado->num_rows > 0) {
-            $usuario = $resultado->fetch_assoc();
-            $resultado->close();
-            if (password_verify($password, $usuario['password'])) {
-                return $usuario;
-            }
-        }
-        return null;
-    }
-
     public function consultar($id)
     {
-        $sql = "SELECT * FROM usuarios WHERE cedula = {$id}";
+        $sql = "SELECT * FROM usuarios WHERE cedula = {$this->db->real_escape_string($id)}";
         $resultado = $this->db->query($sql);
         if ($resultado->num_rows > 0) {
             $usuario = $resultado->fetch_assoc();
@@ -68,7 +45,7 @@ class Usuario
         return null;
     }
 
-    public function guardar()
+    public function crear()
     {
         $sql = "INSERT INTO usuarios (cedula, usuario, nombre, apellido, email, password, rol)
             VALUES ({$this->getCedula()}, '{$this->getUsuario()}', '{$this->getNombre()}', '{$this->getApellido()}', '{$this->getEmail()}', '{$this->getPassword()}', '{$this->getRol()}')";
@@ -81,7 +58,7 @@ class Usuario
 
         $sql = "UPDATE usuarios
             SET cedula = {$this->getCedula()}, usuario = '{$this->getUsuario()}', nombre = '{$this->getNombre()}', apellido = '{$this->getApellido()}', email = '{$this->getEmail()}', rol = '{$this->getRol()}'
-            WHERE cedula = {$id}";
+            WHERE cedula = {$this->db->real_escape_string($id)}";
 
         return $this->db->query($sql);
     }
@@ -89,9 +66,44 @@ class Usuario
     public function eliminar($id)
     {
         $sql = "DELETE FROM usuarios
-            WHERE cedula = {$id}";
+            WHERE cedula = {$this->db->real_escape_string($id)}";
 
         return $this->db->query($sql);
+    }
+
+    public function contar()
+    {
+        $sql = "SELECT COUNT(cedula) as total FROM usuarios";
+        $resultado = $this->db->query($sql);
+        $total = $resultado->fetch_assoc()['total'];
+        $resultado->free();
+        return $total;
+    }
+
+    public function login($usuario, $password)
+    {
+        $sql = "SELECT * FROM usuarios WHERE usuario = '{$this->db->real_escape_string($usuario)}'";
+        $resultado = $this->db->query($sql);
+        if ($resultado->num_rows > 0) {
+            $usuario = $resultado->fetch_assoc();
+            $resultado->close();
+            if (password_verify($password, $usuario['password'])) {
+                return $usuario;
+            }
+        }
+        return null;
+    }
+
+    public function comprobarUsuario($cedula, $usuario)
+    {
+        $sql = "SELECT * FROM usuarios WHERE cedula = {$this->db->real_escape_string($cedula)} OR usuario = '{$this->db->real_escape_string($usuario)}'";
+        $resultado = $this->db->query($sql);
+        if ($resultado->num_rows > 0) {
+            $usuario = $resultado->fetch_assoc();
+            $resultado->close();
+            return false;
+        }
+        return true;
     }
 
     // Setters
@@ -113,7 +125,7 @@ class Usuario
 
     public function setUsuario($usuario)
     {
-        $this->usuario = $this->db->real_escape_string($usuario);
+        $this->usuario = $this->db->real_escape_string(trim(strtolower($usuario)));
     }
 
     public function setEmail($email)

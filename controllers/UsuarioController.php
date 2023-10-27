@@ -54,7 +54,7 @@ class UsuarioController
 
     public function listar()
     {
-        $page = isset($_GET['page']) ? $_GET['page'] : 1;
+        $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
         $this->cantidadUsuarios = $this->model->contar();
         $this->usuarios = $this->model->listar($page, $this->cantidadPorPagina);
         $_GET['pages'] = ceil($this->cantidadUsuarios / $this->cantidadPorPagina);
@@ -81,22 +81,26 @@ class UsuarioController
     public function crear()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('nombre', 'apellido', 'cedula', 'usuario', 'email',  'rol', 'password', 'confirm-password')) {
-            $this->model->setNombre($_POST['nombre']);
-            $this->model->setApellido($_POST['apellido']);
-            $this->model->setCedula($_POST['cedula']);
-            $this->model->setUsuario($_POST['usuario']);
-            $this->model->setEmail($_POST['email']);
-            $this->model->setPassword($_POST['password']);
-            $this->model->setRol($_POST['rol']);
-            if ($_POST['password'] == $_POST['confirm-password']) {
-                $resultado = $this->model->guardar();
-                if ($resultado) {
-                    header('Location:' . 'index.php?url=usuarios&accion=ver&id=' . $this->model->getCedula());
+            if($this->model->comprobarUsuario($_POST['cedula'], $_POST['usuario'])) {
+                $this->model->setNombre($_POST['nombre']);
+                $this->model->setApellido($_POST['apellido']);
+                $this->model->setCedula($_POST['cedula']);
+                $this->model->setUsuario($_POST['usuario']);
+                $this->model->setEmail($_POST['email']);
+                $this->model->setPassword($_POST['password']);
+                $this->model->setRol($_POST['rol']);
+                if ($_POST['password'] == $_POST['confirm-password']) {
+                    $resultado = $this->model->crear();
+                    if ($resultado) {
+                        header('Location:' . 'index.php?url=usuarios&accion=ver&id=' . $this->model->getCedula());
+                    } else {
+                        $this->errors = array('No se pudo crear el usuario');
+                    }
                 } else {
-                    $this->errors = array('No se pudo crear el usuario');
+                    $this->errors = array('La contraseña y la confirmación no coinciden');
                 }
             } else {
-                $this->errors = array('La contraseña y la confirmación no coinciden');
+                $this->errors = array('Este usuario ya existe');
             }
         }
         include 'views/usuarios/crear.php';
@@ -156,26 +160,30 @@ class UsuarioController
     public function register()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('nombre', 'apellido', 'cedula', 'usuario', 'email', 'password', 'confirm-password')) {
-            $this->model->setNombre($_POST['nombre']);
-            $this->model->setApellido($_POST['apellido']);
-            $this->model->setCedula($_POST['cedula']);
-            $this->model->setUsuario($_POST['usuario']);
-            $this->model->setEmail($_POST['email']);
-            $this->model->setPassword($_POST['password']);
-            $this->model->setRol('Usuario');
-            if ($_POST['password'] == $_POST['confirm-password']) {
-                $registro = $this->model->guardar();
-                if (isset($registro)) {
-                    unset($_SESSION['usuario']);
-                    $_SESSION['usuario'] = $registro['usuario'];
-                    $_SESSION['rol'] = $registro['rol'];
-                    $this->errors = null;
-                    header('Location:' . 'index.php');
+            if($this->model->comprobarUsuario($_POST['cedula'], $_POST['usuario'])) {
+                $this->model->setNombre($_POST['nombre']);
+                $this->model->setApellido($_POST['apellido']);
+                $this->model->setCedula($_POST['cedula']);
+                $this->model->setUsuario($_POST['usuario']);
+                $this->model->setEmail($_POST['email']);
+                $this->model->setPassword($_POST['password']);
+                $this->model->setRol('Usuario');
+                if ($_POST['password'] == $_POST['confirm-password']) {
+                    $registro = $this->model->crear();
+                    if (isset($registro)) {
+                        unset($_SESSION['usuario']);
+                        $_SESSION['usuario'] = $_POST['usuario'];
+                        $_SESSION['rol'] = 'Usuario';
+                        $this->errors = null;
+                        header('Location:' . 'index.php');
+                    } else {
+                        $this->errors = array('No se pudo realizar el registro');
+                    }
                 } else {
-                    $this->errors = array('No se pudo realizar el registro');
+                    $this->errors = array('La contraseña y la confirmación no coinciden');
                 }
             } else {
-                $this->errors = array('La contraseña y la confirmación no coinciden');
+                $this->errors = array('Este usuario ya existe');
             }
         }
         include 'views/auth/register.php';

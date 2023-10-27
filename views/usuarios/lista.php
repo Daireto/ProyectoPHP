@@ -55,18 +55,19 @@
                     <div class="paginacion">
                         <div class="cantidad-registros">
                             <?php
-                                $inicio = isset($_GET['page']) ? ($_GET['page'] - 1) * $this->cantidadPorPagina : 0;
+                                $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+                                $inicio = ($page - 1) * $this->cantidadPorPagina;
                                 $final = $inicio + count($this->usuarios);
                                 $rango = "Mostrando ".($inicio+1)."-".$final." usuarios";
                             ?>
                             <span><?php echo $rango ?></span>
                         </div>
                         <div class="opciones">
-                            <?php if (isset($_GET['page']) && $_GET['page'] > 1): ?>
-                                <a href="?url=usuarios&page=<?php echo isset($_GET['page']) ? $_GET['page'] - 1 : 1 ?>">Anterior</a>
+                            <?php if ($page > 1): ?>
+                                <a href="?url=usuarios&page=<?php echo $page - 1 ?>">Anterior</a>
                             <?php endif ?>
-                            <?php if (isset($_GET['page']) ? $_GET['page'] < $_GET['pages'] : true): ?>
-                                <a href="?url=usuarios&page=<?php echo isset($_GET['page']) ? $_GET['page'] + 1 : 2 ?>">Siguiente</a>
+                            <?php if ($page < $_GET['pages']): ?>
+                                <a href="?url=usuarios&page=<?php echo $page + 1 ?>">Siguiente</a>
                             <?php endif ?>
                         </div>
                     </div>
