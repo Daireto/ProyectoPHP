@@ -1,0 +1,17 @@
+.cambiar-contraseña {
+    background-color: rgba(39, 39, 39, 0.562);
+    backdrop-filter: blur(5px);
+    min-height: calc(100vh - 218px);
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 30px;
+}
+
+.campo-formulario {
+    width: 100% !important;
+}
+
+.campo-formulario input {
+    width: 20% !important;
+}

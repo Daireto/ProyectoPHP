@@ -23,7 +23,8 @@ class Usuario
     public function listar($page = 1, $cantidadPorPagina = 8)
     {
         $page = ($page - 1) * $cantidadPorPagina;
-        $sql = "SELECT * FROM usuarios ORDER BY rol ASC, fecha_creacion DESC LIMIT {$cantidadPorPagina} OFFSET {$page}";
+        $sql = "SELECT * FROM usuarios
+            ORDER BY rol ASC, fecha_creacion DESC LIMIT {$cantidadPorPagina} OFFSET {$page}";
         $resultado = $this->db->query($sql);
         if ($resultado->num_rows > 0) {
             $usuarios = $resultado->fetch_all(MYSQLI_ASSOC);
@@ -35,7 +36,8 @@ class Usuario
 
     public function consultar($id)
     {
-        $sql = "SELECT * FROM usuarios WHERE cedula = {$this->db->real_escape_string($id)}";
+        $sql = "SELECT * FROM usuarios
+            WHERE cedula = {$this->db->real_escape_string($id)} LIMIT 1";
         $resultado = $this->db->query($sql);
         if ($resultado->num_rows > 0) {
             $usuario = $resultado->fetch_assoc();
@@ -104,6 +106,27 @@ class Usuario
             return false;
         }
         return true;
+    }
+
+    public function comprobarPassword($cedula, $password)
+    {
+        $sql = "SELECT * FROM usuarios WHERE cedula = {$this->db->real_escape_string($cedula)}";
+        $resultado = $this->db->query($sql);
+        if ($resultado->num_rows > 0) {
+            $usuario = $resultado->fetch_assoc();
+            $resultado->close();
+            return password_verify($password, $usuario['password']);
+        }
+        return false;
+    }
+
+    public function cambiarPassword($cedula)
+    {
+        $sql = "UPDATE usuarios
+            SET password = '{$this->getPassword()}'
+            WHERE cedula = {$this->db->real_escape_string($cedula)}";
+
+        return $this->db->query($sql);
     }
 
     // Setters

@@ -81,7 +81,7 @@ class UsuarioController
     public function crear()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('nombre', 'apellido', 'cedula', 'usuario', 'email',  'rol', 'password', 'confirm-password')) {
-            if($this->model->comprobarUsuario($_POST['cedula'], $_POST['usuario'])) {
+            if ($this->model->comprobarUsuario($_POST['cedula'], $_POST['usuario'])) {
                 $this->model->setNombre($_POST['nombre']);
                 $this->model->setApellido($_POST['apellido']);
                 $this->model->setCedula($_POST['cedula']);
@@ -147,6 +147,7 @@ class UsuarioController
             if (isset($registro)) {
                 unset($_SESSION['usuario']);
                 $_SESSION['usuario'] = $registro['usuario'];
+                $_SESSION['cedula'] = $registro['cedula'];
                 $_SESSION['rol'] = $registro['rol'];
                 $this->errors = null;
                 header('Location:' . 'index.php');
@@ -160,7 +161,7 @@ class UsuarioController
     public function register()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('nombre', 'apellido', 'cedula', 'usuario', 'email', 'password', 'confirm-password')) {
-            if($this->model->comprobarUsuario($_POST['cedula'], $_POST['usuario'])) {
+            if ($this->model->comprobarUsuario($_POST['cedula'], $_POST['usuario'])) {
                 $this->model->setNombre($_POST['nombre']);
                 $this->model->setApellido($_POST['apellido']);
                 $this->model->setCedula($_POST['cedula']);
@@ -173,6 +174,7 @@ class UsuarioController
                     if (isset($registro)) {
                         unset($_SESSION['usuario']);
                         $_SESSION['usuario'] = $_POST['usuario'];
+                        $_SESSION['cedula'] = $_POST['cedula'];
                         $_SESSION['rol'] = 'Usuario';
                         $this->errors = null;
                         header('Location:' . 'index.php');

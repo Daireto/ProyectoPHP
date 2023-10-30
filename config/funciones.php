@@ -9,7 +9,7 @@ function validar_rol($rol)
 // Verifica que el usuario esté autenticado
 function validar_sesion($rol = null)
 {
-    if (!isset($_SESSION['usuario'])) {
+    if (!isset($_SESSION['usuario']) || !isset($_SESSION['cedula'])) {
         header('Location:' . 'index.php?url=no-autorizado');
     }
     if ($rol != null && !validar_rol($rol)) {

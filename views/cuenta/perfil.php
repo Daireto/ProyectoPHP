@@ -1,4 +1,5 @@
 <?php include "views/layout/header.php" ?>
+    <link rel="stylesheet" href="assets/css/layout/lista.css">
     <link rel="stylesheet" href="assets/css/layout/ver.css">
 </head>
 
@@ -11,11 +12,11 @@
         <section class="ver">
             <div class="ver-contenedor">
                 <div class="ver-encabezado">
-                    <h2>Datos del usuario</h2>
+                    <h2>Perfil del usuario</h2>
                     <div class="ver-opciones">
-                        <button class="regresar"><a href="?url=usuarios">Regresar</a></button>
-                        <button class="editar"><a href="?url=usuarios&accion=editar&id=<?php echo $this->usuario['cedula'] ?>">Editar</a></button>
-                        <button class="eliminar"><a href="?url=usuarios&accion=eliminar&id=<?php echo $this->usuario['cedula'] ?>">Eliminar</a></button>
+                        <button class="estadias"><a href="?url=cuenta&accion=estadias">Mis estadías</a></button>
+                        <button class="pagos"><a href="?url=cuenta&accion=pagos">Mis pagos</a></button>
+                        <button class="cambiar-contraseña"><a href="?url=cuenta&accion=cambiar-contraseña">Cambiar contraseña</a></button>
                     </div>
                 </div>
                 <div class="ver-contenido">
@@ -42,14 +43,6 @@
                     <div class="ver-campo">
                         <div class="campo-etiqueta">Rol</div>
                         <div class="campo-valor"><?php echo $this->usuario['rol'] ?></div>
-                    </div>
-                    <div class="ver-campo">
-                        <div class="campo-etiqueta">Fecha de creación</div>
-                        <div class="campo-valor"><?php echo $this->usuario['fecha_creacion'] ?></div>
-                    </div>
-                    <div class="ver-campo">
-                        <div class="campo-etiqueta">Fecha de actualización</div>
-                        <div class="campo-valor"><?php echo $this->usuario['fecha_actualizacion'] ?></div>
                     </div>
                 </div>
             </div>
