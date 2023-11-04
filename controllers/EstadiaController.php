@@ -68,7 +68,7 @@ class EstadiaController
                 return $estadia;
             }
         }
-        mostrar_error('Estadía no encontrado');
+        mostrar_error('Estadía no encontrada');
     }
 
     public function ver()
@@ -86,7 +86,7 @@ class EstadiaController
             $this->model->setFechaSalida($_POST['fecha_salida']);
             $resultado = $this->model->crear();
             if ($resultado) {
-                header('Location:' . 'index.php?url=estadias&accion=ver&id=' . $this->model->getCedula());
+                header('Location:' . 'index.php?url=estadias&accion=ver&id=' . $this->model->getPlaca());
             } else {
                 $this->errors = array('No se pudo crear la estadía');
             }
