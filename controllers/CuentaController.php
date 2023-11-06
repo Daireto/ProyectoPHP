@@ -129,9 +129,16 @@ class CuentaController
         if (isset($_GET['id'])) {
             $this->estadia = $this->estadiasModel->consultar($_GET['id'], $_SESSION['cedula']);
             if ($this->estadia != null) {
-                $this->pago = null; // FIXME: Fill with correct data
+                $this->pago = $this->estadia['codigo_pago'] != null ? array(
+                    array('codigo_pago' => $this->estadia['codigo_pago']),
+                    array('monto' => $this->estadia['monto']),
+                    array('medio' => $this->estadia['medio']),
+                    array('creacion_pago' => $this->estadia['creacion_pago']),
+                    array('act_pago' => $this->estadia['act_pago']),
+                ) : null;
                 $this->estadia['registrado'] = ($this->usuariosModel->consultar($this->estadia['cedula']) != null);
                 include 'views/cuenta/ver-estadia-pago.php';
+                return;
             }
         }
         mostrar_error('Estadía no encontrada');
@@ -143,8 +150,17 @@ class CuentaController
         if (isset($_GET['id'])) {
             $this->pago = $this->pagosModel->consultar($_GET['id'], $_SESSION['cedula']);
             if ($this->pago != null) {
-                $this->estadia = array(); // FIXME: Fill with correct data
+                $this->estadia = array(
+                    array('codigo_estadia', $this->pago['codigo_est']),
+                    array('placa', $this->pago['placa']),
+                    array('cedula', $this->pago['cedula']),
+                    array('fecha_ingreso', $this->pago['fecha_ingreso']),
+                    array('fecha_salida', $this->pago['fecha_salida']),
+                    array('creacion_estadia', $this->pago['creacion_estadia']),
+                    array('act_estadia', $this->pago['act_estadia']),
+                );
                 include 'views/cuenta/ver-estadia-pago.php';
+                return;
             }
         }
         mostrar_error('Pago no encontrado');

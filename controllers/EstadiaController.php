@@ -25,23 +25,23 @@ class EstadiaController
         $accion = isset($_GET['accion']) ? $_GET['accion'] : 'listar';
         switch ($accion) {
             case 'listar':
-                $this->listar();  //TODO: Check this view
+                $this->listar();
                 break;
 
             case 'crear':
-                $this->crear();  //TODO: Create view
+                $this->crear();
                 break;
 
             case 'ver':
-                $this->ver();  //TODO: Create view
+                $this->ver();
                 break;
 
             case 'editar':
-                $this->editar();  //TODO: Create view
+                $this->editar();
                 break;
 
             case 'eliminar':
-                $this->eliminar();  //TODO: Create view
+                $this->eliminar();
                 break;
 
             default:
@@ -86,7 +86,7 @@ class EstadiaController
             $this->model->setFechaSalida($_POST['fecha_salida']);
             $resultado = $this->model->crear();
             if ($resultado) {
-                header('Location:' . 'index.php?url=estadias&accion=ver&id=' . $this->model->getPlaca());
+                header('Location:' . 'index.php?url=estadias');
             } else {
                 $this->errors = array('No se pudo crear la estadía');
             }
@@ -104,7 +104,7 @@ class EstadiaController
             $this->model->setFechaSalida($_POST['fecha_salida']);
             $resultado = $this->model->editar($_GET['id']);
             if ($resultado) {
-                header('Location:' . 'index.php?url=estadias&accion=ver&id=' . $this->model->getCedula());
+                header('Location:' . 'index.php?url=estadias');
             } else {
                 $this->errors = array('No se pudo editar la estadía');
             }

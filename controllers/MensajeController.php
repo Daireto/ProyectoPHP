@@ -87,7 +87,7 @@ class MensajeController
             $this->model->setAsunto($_POST['asunto']);
             $resultado = $this->model->crear();
             if ($resultado) {
-                header('Location:' . 'index.php?url=mensajes&accion=ver&id=' . $this->model->getCodigo());
+                header('Location:' . 'index.php?url=mensajes');
             } else {
                 $this->errors = array('No se pudo crear el mensaje');
             }
@@ -104,7 +104,7 @@ class MensajeController
             $this->model->setAsunto($_POST['asunto']);
             $resultado = $this->model->editar($_GET['id']);
             if ($resultado) {
-                header('Location:' . 'index.php?url=mensajes&accion=ver&id=' . $this->model->getCodigo());
+                header('Location:' . 'index.php?url=mensajes');
             } else {
                 $this->errors = array('No se pudo editar el mensaje');
             }

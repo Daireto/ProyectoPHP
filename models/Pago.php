@@ -21,12 +21,12 @@ class Pago
     {
         $page = ($page - 1) * $cantidadPorPagina;
         if ($cedula != null) {
-            $sql = "SELECT * FROM pagos as p
+            $sql = "SELECT p.codigo, p.monto, p.medio, p.codigo_est, e.cedula FROM pagos as p
                 INNER JOIN estadias as e ON e.codigo = p.codigo_est
                 WHERE e.cedula = {$this->db->real_escape_string($cedula)}
                 ORDER BY p.fecha_creacion DESC LIMIT {$cantidadPorPagina} OFFSET {$page}";
         } else {
-            $sql = "SELECT * FROM pagos as p
+            $sql = "SELECT p.codigo, p.monto, p.medio, p.codigo_est, e.cedula FROM pagos as p
                 INNER JOIN estadias as e ON e.codigo = p.codigo_est
                 ORDER BY p.fecha_creacion DESC LIMIT {$cantidadPorPagina} OFFSET {$page}";
         }
@@ -42,11 +42,11 @@ class Pago
     public function consultar($id, $cedula = null)
     {
         if ($cedula != null) {
-            $sql = "SELECT * FROM pagos as p
+            $sql = "SELECT p.codigo as codigo_pago, p.monto, p.medio, p.codigo_est, p.fecha_creacion as creacion_pago, p.fecha_actualizacion as act_pago, e.placa, e.cedula, e.fecha_ingreso, e.fecha_salida, e.fecha_creacion as creacion_estadia, e.fecha_actualizacion as act_estadia FROM pagos as p
                 INNER JOIN estadias as e ON e.codigo = p.codigo_est
                 WHERE p.codigo = {$this->db->real_escape_string($id)} AND e.cedula = {$this->db->real_escape_string($cedula)} LIMIT 1";
         } else {
-            $sql = "SELECT * FROM pagos as p
+            $sql = "SELECT p.codigo, p.monto, p.medio, p.codigo_est, p.fecha_creacion, p.fecha_actualizacion, e.cedula FROM pagos as p
                 INNER JOIN estadias as e ON e.codigo = p.codigo_est
                 WHERE p.codigo = {$this->db->real_escape_string($id)} LIMIT 1";
         }

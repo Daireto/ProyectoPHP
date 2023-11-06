@@ -42,7 +42,7 @@
                                 <td class="campo"><?php echo $estadia['fecha_ingreso'] ?></td>
                                 <td class="campo"><?php echo $estadia['fecha_salida'] ?></td>
                                 <td class="opciones">
-                                    <a class="ver" href="?url=cuenta&accion=ver-estadia">Ver</a>
+                                    <a class="ver" href="?url=cuenta&accion=ver-estadia&id=<?php echo $estadia['codigo'] ?>">Ver</a>
                                 </td>
                             </tr>
                         <?php endforeach ?>

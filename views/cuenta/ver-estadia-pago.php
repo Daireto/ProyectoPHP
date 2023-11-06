@@ -20,7 +20,7 @@
                 <div class="ver-contenido">
                     <div class="ver-campo">
                         <div class="campo-etiqueta">Código</div>
-                        <div class="campo-valor"><?php echo $this->estadia['codigo'] ?></div>
+                        <div class="campo-valor"><?php echo $this->estadia['codigo_estadia'] ?></div>
                     </div>
                     <div class="ver-campo">
                         <div class="campo-etiqueta">Placa</div>
@@ -39,16 +39,22 @@
                         <div class="campo-valor"><?php echo $this->estadia['cedula'] ?></div>
                     </div>
                     <div class="ver-campo">
-                        <div class="campo-etiqueta">Usuario registrado</div>
-                        <div class="campo-valor"><?php echo $this->estadia['registrado'] ?></div>
+                        <div class="campo-etiqueta">Pagada</div>
+                        <div class="campo-valor">
+                            <?php if ($this->pago != null && $this->pago['codigo_pago'] != null): ?>
+                                Si
+                            <?php else: ?>
+                                No
+                            <?php endif ?>
+                        </div>
                     </div>
                     <div class="ver-campo">
                         <div class="campo-etiqueta">Fecha de creación</div>
-                        <div class="campo-valor"><?php echo $this->estadia['fecha_creacion'] ?></div>
+                        <div class="campo-valor"><?php echo $this->estadia['creacion_estadia'] ?></div>
                     </div>
                     <div class="ver-campo">
                         <div class="campo-etiqueta">Fecha de actualización</div>
-                        <div class="campo-valor"><?php echo $this->estadia['fecha_actualizacion'] ?></div>
+                        <div class="campo-valor"><?php echo $this->estadia['act_estadia'] ?></div>
                     </div>
                 </div>
             </div>
@@ -73,11 +79,11 @@
                         <div class="ver-campo"></div>
                         <div class="ver-campo">
                             <div class="campo-etiqueta">Fecha de creación</div>
-                            <div class="campo-valor"><?php echo $this->pago['fecha_creacion'] ?></div>
+                            <div class="campo-valor"><?php echo $this->pago['creacion_pago'] ?></div>
                         </div>
                         <div class="ver-campo">
                             <div class="campo-etiqueta">Fecha de actualización</div>
-                            <div class="campo-valor"><?php echo $this->pago['fecha_actualizacion'] ?></div>
+                            <div class="campo-valor"><?php echo $this->pago['act_pago'] ?></div>
                         </div>
                     </div>
                 </div>

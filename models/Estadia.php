@@ -41,12 +41,12 @@ class Estadia
     public function consultar($id, $cedula = null)
     {
         if ($cedula != null) {
-            $sql = "SELECT * FROM estadias as e
-                INNER JOIN pagos as p ON e.codigo = p.codigo_est
+            $sql = "SELECT e.codigo as codigo_estadia, e.placa, e.cedula, e.fecha_ingreso, e.fecha_salida, e.fecha_creacion as creacion_estadia, e.fecha_actualizacion as act_estadia, p.codigo as codigo_pago, p.monto, p.medio, p.fecha_creacion as creacion_pago, p.fecha_actualizacion as act_pago FROM estadias as e
+                LEFT JOIN pagos as p ON e.codigo = p.codigo_est
                 WHERE e.codigo = {$this->db->real_escape_string($id)} AND e.cedula = {$this->db->real_escape_string($cedula)} LIMIT 1";
         } else {
-            $sql = "SELECT * FROM estadias as e
-                INNER JOIN pagos as p ON e.codigo = p.codigo_est
+            $sql = "SELECT e.codigo, e.placa, e.cedula, e.fecha_ingreso, e.fecha_salida, e.fecha_creacion, e.fecha_actualizacion, p.codigo_est FROM estadias as e
+                LEFT JOIN pagos as p ON e.codigo = p.codigo_est
                 WHERE e.codigo = {$this->db->real_escape_string($id)} LIMIT 1";
         }
         $resultado = $this->db->query($sql);
@@ -111,11 +111,13 @@ class Estadia
 
     public function setFechaIngreso($fecha_ingreso)
     {
+        $fecha_ingreso = date("Y-m-d H:i:s",strtotime($fecha_ingreso));
         $this->fecha_ingreso = $this->db->real_escape_string($fecha_ingreso);
     }
 
     public function setFechaSalida($fecha_salida)
     {
+        $fecha_salida = date("Y-m-d H:i:s",strtotime($fecha_salida));
         $this->fecha_salida = $this->db->real_escape_string($fecha_salida);
     }
 

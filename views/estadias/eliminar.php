@@ -10,11 +10,11 @@
     <main>
         <section class="eliminar">
             <div class="eliminar-contenedor">
-                <h2>Eliminar usuario</h2>
-                <p class="texto-confirmar">¿Desea eliminar al usuario con cédula <span id="id-registro"><?php echo $this->usuario['cedula'] ?></span>?</p>
+                <h2>Eliminar estadía</h2>
+                <p class="texto-confirmar">¿Desea eliminar la estadía con código <span id="id-registro"><?php echo $this->estadia['codigo'] ?></span>?</p>
                 <p class="texto-advertencia">¡Esta operación es irreversible!</p>
-                <form action="?url=usuarios&accion=eliminar&id=<?php echo $this->usuario['cedula'] ?>" method="post">
-                    <input type="hidden" id="id" name="id" value="<?php echo $this->usuario['cedula'] ?>">
+                <form action="?url=estadias&accion=eliminar&id=<?php echo $this->estadia['codigo'] ?>" method="post">
+                    <input type="hidden" id="id" name="id" value="<?php echo $this->estadia['codigo'] ?>">
                     <div class="opciones-formulario">
                         <button class="submit" type="submit">Eliminar</button>
                         <button class="cancelar" onclick="window.history.go(-1); return false;">Cancelar</button>

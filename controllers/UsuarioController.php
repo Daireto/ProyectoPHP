@@ -92,7 +92,7 @@ class UsuarioController
                 if ($_POST['password'] == $_POST['confirm-password']) {
                     $resultado = $this->model->crear();
                     if ($resultado) {
-                        header('Location:' . 'index.php?url=usuarios&accion=ver&id=' . $this->model->getCedula());
+                        header('Location:' . 'index.php?url=usuarios');
                     } else {
                         $this->errors = array('No se pudo crear el usuario');
                     }
@@ -118,7 +118,7 @@ class UsuarioController
             $this->model->setRol($_POST['rol']);
             $resultado = $this->model->editar($_GET['id']);
             if ($resultado) {
-                header('Location:' . 'index.php?url=usuarios&accion=ver&id=' . $this->model->getCedula());
+                header('Location:' . 'index.php?url=usuarios');
             } else {
                 $this->errors = array('No se pudo editar el usuario');
             }

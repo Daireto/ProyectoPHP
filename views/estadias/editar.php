@@ -10,7 +10,7 @@
     <main>
         <section class="crear-editar">
             <div class="formulario-contenedor">
-                <h2>Editar usuario</h2>
+                <h2>Editar estadía</h2>
                 <?php if (isset($_GET['mensaje'])): ?>
                     <div class="campo-error"><?php echo $_GET['mensaje'] ?></div>
                 <?php endif ?>
@@ -19,34 +19,22 @@
                         <div class="campo-error"><?php echo $error ?></div>
                     <?php endforeach ?>
                 <?php endif ?>
-                <form action="?url=usuarios&accion=editar&id=<?php echo $this->usuario['cedula'] ?>" method="post">
+                <form action="?url=estadias&accion=editar&id=<?php echo $this->estadia['codigo'] ?>" method="post">
                     <div class="campo-formulario">
-                        <label>Usuario</label>
-                        <input type="text" id="usuario" name="usuario" value="<?php echo mostrar_campo('usuario') ?? $this->usuario['usuario'] ?>" required>
-                    </div>
-                    <div class="campo-formulario">
-                        <label>Correo electrónico</label>
-                        <input type="email" id="email" name="email" value="<?php echo mostrar_campo('email') ?? $this->usuario['email'] ?>" required>
-                    </div>
-                    <div class="campo-formulario">
-                        <label>Nombre</label>
-                        <input type="text" id="nombre" name="nombre" value="<?php echo mostrar_campo('nombre') ?? $this->usuario['nombre'] ?>" required>
-                    </div>
-                    <div class="campo-formulario">
-                        <label>Apellido</label>
-                        <input type="text" id="apellido" name="apellido" value="<?php echo mostrar_campo('apellido') ?? $this->usuario['apellido'] ?>" required>
+                        <label>Placa</label>
+                        <input type="text" id="placa" name="placa" value="<?php echo mostrar_campo('placa') ?? $this->estadia['placa'] ?>" required>
                     </div>
                     <div class="campo-formulario">
                         <label>Cédula</label>
-                        <input type="number" id="cedula" name="cedula" value="<?php echo mostrar_campo('cedula') ?? $this->usuario['cedula'] ?>" min="10000000" max="9999999999" required>
+                        <input type="number" id="cedula" name="cedula" value="<?php echo mostrar_campo('cedula') ?? $this->estadia['cedula'] ?>" min="10000000" max="9999999999" required>
                     </div>
                     <div class="campo-formulario">
-                        <label>Rol</label>
-                        <select class="campo" id="rol" name="rol" required>
-                            <?php foreach ($this->roles as $rol): ?>
-                                <option value="<?php echo $rol ?>" <?php echo (mostrar_campo('rol') ?? $this->usuario['rol']) == $rol ? 'selected' : '' ?>><?php echo $rol ?></option>
-                            <?php endforeach ?>
-                        </select>
+                        <label>Fecha de ingreso</label>
+                        <input type="datetime-local" id="fecha_ingreso" name="fecha_ingreso" value="<?php echo mostrar_campo('fecha_ingreso') ?? $this->estadia['fecha_ingreso'] ?>" required>
+                    </div>
+                    <div class="campo-formulario">
+                        <label>Fecha de salida</label>
+                        <input type="datetime-local" id="fecha_salida" name="fecha_salida" value="<?php echo mostrar_campo('fecha_salida') ?? $this->estadia['fecha_salida'] ?>" required>
                     </div>
                     <div class="opciones-formulario">
                         <button class="submit" type="submit">Guardar</button>
