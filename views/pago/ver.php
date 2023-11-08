@@ -20,27 +20,27 @@
                 </div>
                 <div class="ver-contenido">
                     <div class="ver-campo">
-                        <div class="campo-etiqueta">codigo</div>
+                        <div class="campo-etiqueta">Codigo</div>
                         <div class="campo-valor"><?php echo $this->pago['codigo'] ?></div>
                     </div>
                     <div class="ver-campo">
-                        <div class="campo-etiqueta">monto</div>
+                        <div class="campo-etiqueta">Monto</div>
                         <div class="campo-valor"><?php echo $this->pago['monto'] ?></div>
                     </div>
                     <div class="ver-campo">
-                        <div class="campo-etiqueta">medio</div>
+                        <div class="campo-etiqueta">Medio</div>
                         <div class="campo-valor"><?php echo $this->pago['medio'] ?></div>
                     </div>
                     <div class="ver-campo">
-                        <div class="campo-etiqueta">codigo_est</div>
+                        <div class="campo-etiqueta">Codigo Estadia</div>
                         <div class="campo-valor"><?php echo $this->pago['codigo_est'] ?></div>
                     </div>
                     <div class="ver-campo">
-                        <div class="campo-etiqueta">fecha_creacion</div>
+                        <div class="campo-etiqueta">Fecha Creación</div>
                         <div class="campo-valor"><?php echo $this->pago['fecha_creacion'] ?></div>
                     </div>
                     <div class="ver-campo">
-                        <div class="campo-etiqueta">fecha_actualizacion</div>
+                        <div class="campo-etiqueta">Fecha Actualización</div>
                         <div class="campo-valor"><?php echo $this->pago['fecha_actualizacion'] ?></div>
                     </div>
                 </div>

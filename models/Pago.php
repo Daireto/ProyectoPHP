@@ -109,7 +109,7 @@ class Pago
 
     public function setMedio($medio)
     {
-        $this->medio = $this->db->real_escape_string(trim(strtoupper($medio)));
+        $this->medio = $this->db->real_escape_string(trim($medio));
     }
 
     public function setCodigoEstadia($codigo_est)

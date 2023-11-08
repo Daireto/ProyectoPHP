@@ -27,13 +27,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (count($this->pago) == 0): ?>
-                            <tr class="crear">
+                        <?php if (count($this->pagos) == 0): ?>
+                            <tr class="registro">
                                 <td class="campo" colspan="5">No se encontró ningún Pago</td>
                             </tr>
                         <?php endif ?>
-                        <?php foreach($this->pago as $pago): ?>
-                            <tr class="crear">
+                        <?php foreach($this->pagos as $pago): ?>
+                            <tr class="registro">
                                 <td class="campo"><?php echo $pago['codigo'] ?></td>
                                 <td class="campo"><?php echo $pago['monto'] ?></td>
                                 <td class="campo"><?php echo $pago['medio'] ?></td>
