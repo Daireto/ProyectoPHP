@@ -3,6 +3,7 @@ require_once 'config/funciones.php';
 require_once 'controllers/UsuarioController.php';
 require_once 'controllers/EstadiaController.php';
 require_once 'controllers/CuentaController.php';
+require_once 'controllers/PagoController.php';
 
 // Inicializar sesión y variables
 session_start();
@@ -12,6 +13,7 @@ unset($_GET['mensaje']);
 $usuarioController = new UsuarioController();
 $estadiaController = new EstadiaController();
 $cuentaController = new CuentaController();
+$pagoController = new PagoController();
 
 // Rutas
 $url = isset($_GET['url']) ? $_GET['url'] : 'principal';
@@ -44,6 +46,10 @@ try {
 
         case 'estadias':
             $estadiaController->ejecutar();
+            break;
+        
+        case 'pago':
+            $pagoController->ejecutar();
             break;
 
         case 'no-autorizado':

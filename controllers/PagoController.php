@@ -3,13 +3,6 @@ require_once 'models/Pago.php';
 
 class PagoController
 {
-    private $codigo;
-    private $monto;
-    private $medio;
-    private $codigo_est;
-    private $fecha_creacion;
-    private $fecha_actualizacion;
-
     public function __construct()
     {
         $this->model = new Pago();
@@ -39,7 +32,6 @@ class PagoController
                 $this->editar();
                 break;
 
-
             default:
                 $_GET['mensaje'] = 'Acción desconocida';
                 include 'views/error.php';
@@ -51,9 +43,9 @@ class PagoController
     {
         $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
         $this->cantidadPago = $this->model->contar();
-        $this->Pago = $this->model->listar($page, $this->cantidadPago);
-        $_GET['pages'] = ceil($this->cantidadEstadias / $this->cantidadPago);
-        include 'views/Pago/lista.php';
+        $this->Pagos = $this->model->listar($page, $this->cantidadPago);
+        $_GET['pages'] = ceil($this->cantidadPago / $this->cantidadPago);
+        include 'views/pago/lista.php';
     }
 
     public function consultar()
@@ -70,43 +62,42 @@ class PagoController
     public function ver()
     {
         $this->Pago = $this->consultar();
-        include 'views/Pago/ver.php';
+        include 'views/pago/ver.php';
     }
 
     public function crear()
     {
         
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('placa', 'cedula', 'fecha_ingreso', 'fecha_salida')) {
-            $this->model->setPlaca($_POST['placa']);
-            $this->model->setCedula($_POST['cedula']);
-            $this->model->setFechaIngreso($_POST['fecha_ingreso']);
-            $this->model->setFechaSalida($_POST['fecha_salida']);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('monto', 'medio', 'codigo_est')) {
+            $this->model->setmonto($_POST['monto']);
+            $this->model->setmedio($_POST['medio']);
+            $this->model->setcodigo_est($_POST['codigo_est']);
+            
             $resultado = $this->model->crear();
             if ($resultado) {
-                header('Location:' . 'index.php?url=Pago');
+                header('Location:' . 'index.php?url=pago');
             } else {
-                $this->errors = array('No se pudo crear el pago);
+                $this->errors = array('No se pudo crear el pago');
             }
         }
-        include 'views/Pago/crear.php';
+        include 'views/pago/crear.php';
     }
 
     public function editar()
     {
         $this->Pago = $this->consultar();
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('placa', 'cedula', 'fecha_ingreso', 'fecha_salida')) {
-            $this->model->setPlaca($_POST['placa']);
-            $this->model->setCedula($_POST['cedula']);
-            $this->model->setFechaIngreso($_POST['fecha_ingreso']);
-            $this->model->setFechaSalida($_POST['fecha_salida']);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('monto', 'medio', 'codigo_est')) {
+            $this->model->setmonto($_POST['monto']);
+            $this->model->setmedio($_POST['medio']);
+            $this->model->setcodigo_est($_POST['codigo_est']);
             $resultado = $this->model->editar($_GET['id']);
             if ($resultado) {
-                header('Location:' . 'index.php?url=estadias');
+                header('Location:' . 'index.php?url=pago');
             } else {
                 $this->errors = array('No se pudo editar el pago');
             }
         }
-        include 'views/Pago/editar.php';
+        include 'views/pago/editar.php';
     }
 
     public function eliminar()
@@ -115,12 +106,12 @@ class PagoController
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('id')) {
             $resultado = $this->model->eliminar($_POST['id']);
             if ($resultado) {
-                header('Location:' . 'index.php?url=estadias');
+                header('Location:' . 'index.php?url=pago');
             } else {
                 $this->errors = array('No se pudo eliminar el pago');
             }
         }
-        include 'views/Pago/eliminar.php';
+        include 'views/pago/eliminar.php';
     }
 }
 
