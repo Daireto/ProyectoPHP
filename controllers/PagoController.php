@@ -12,10 +12,10 @@ class PagoController
 
     public function __construct()
     {
-        $this->model = new Estadia();
+        $this->model = new Pago();
         $this->errors = null;
-        $this->cantidadEstadias = 0;
-        $this->cantidadPorPagina = 8;
+        $this->cantidadPago = 0;
+        $this->cantidadPago = 8;
     }
 
     public function ejecutar()
@@ -39,9 +39,6 @@ class PagoController
                 $this->editar();
                 break;
 
-            case 'eliminar':
-                $this->eliminar();
-                break;
 
             default:
                 $_GET['mensaje'] = 'Acción desconocida';
@@ -53,31 +50,32 @@ class PagoController
     public function listar()
     {
         $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-        $this->cantidadEstadias = $this->model->contar();
-        $this->estadias = $this->model->listar($page, $this->cantidadPorPagina);
-        $_GET['pages'] = ceil($this->cantidadEstadias / $this->cantidadPorPagina);
-        include 'views/estadias/lista.php';
+        $this->cantidadPago = $this->model->contar();
+        $this->Pago = $this->model->listar($page, $this->cantidadPago);
+        $_GET['pages'] = ceil($this->cantidadEstadias / $this->cantidadPago);
+        include 'views/Pago/lista.php';
     }
 
     public function consultar()
     {
         if (isset($_GET['id'])) {
-            $estadia = $this->model->consultar($_GET['id']);
-            if ($estadia != null) {
-                return $estadia;
+            $Pago = $this->model->consultar($_GET['id']);
+            if ($Pago != null) {
+                return $Pago;
             }
         }
-        mostrar_error('Estadía no encontrada');
+        mostrar_error('Pago no encontrada');
     }
 
     public function ver()
     {
-        $this->estadia = $this->consultar();
-        include 'views/estadias/ver.php';
+        $this->Pago = $this->consultar();
+        include 'views/Pago/ver.php';
     }
 
     public function crear()
     {
+        
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('placa', 'cedula', 'fecha_ingreso', 'fecha_salida')) {
             $this->model->setPlaca($_POST['placa']);
             $this->model->setCedula($_POST['cedula']);
@@ -85,17 +83,17 @@ class PagoController
             $this->model->setFechaSalida($_POST['fecha_salida']);
             $resultado = $this->model->crear();
             if ($resultado) {
-                header('Location:' . 'index.php?url=estadias');
+                header('Location:' . 'index.php?url=Pago');
             } else {
-                $this->errors = array('No se pudo crear la estadía');
+                $this->errors = array('No se pudo crear el pago);
             }
         }
-        include 'views/estadias/crear.php';
+        include 'views/Pago/crear.php';
     }
 
     public function editar()
     {
-        $this->estadia = $this->consultar();
+        $this->Pago = $this->consultar();
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('placa', 'cedula', 'fecha_ingreso', 'fecha_salida')) {
             $this->model->setPlaca($_POST['placa']);
             $this->model->setCedula($_POST['cedula']);
@@ -105,24 +103,24 @@ class PagoController
             if ($resultado) {
                 header('Location:' . 'index.php?url=estadias');
             } else {
-                $this->errors = array('No se pudo editar la estadía');
+                $this->errors = array('No se pudo editar el pago');
             }
         }
-        include 'views/estadias/editar.php';
+        include 'views/Pago/editar.php';
     }
 
     public function eliminar()
     {
-        $this->estadia = $this->consultar();
+        $this->Pago = $this->consultar();
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('id')) {
             $resultado = $this->model->eliminar($_POST['id']);
             if ($resultado) {
                 header('Location:' . 'index.php?url=estadias');
             } else {
-                $this->errors = array('No se pudo eliminar la estadía');
+                $this->errors = array('No se pudo eliminar el pago');
             }
         }
-        include 'views/estadias/eliminar.php';
+        include 'views/Pago/eliminar.php';
     }
 }
 
