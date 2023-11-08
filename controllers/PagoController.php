@@ -3,12 +3,19 @@ require_once 'models/Pago.php';
 
 class PagoController
 {
+    public $model;
+    public $errors;
+    public $pago;
+    public $pagos;
+    public $cantidadPago;
+    public $cantidadPorPagina;
+ 
     public function __construct()
     {
         $this->model = new Pago();
         $this->errors = null;
         $this->cantidadPago = 0;
-        $this->cantidadPago = 8;
+        $this->cantidadPorPagina = 8;
     }
 
     public function ejecutar()
@@ -43,8 +50,8 @@ class PagoController
     {
         $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
         $this->cantidadPago = $this->model->contar();
-        $this->Pagos = $this->model->listar($page, $this->cantidadPago);
-        $_GET['pages'] = ceil($this->cantidadPago / $this->cantidadPago);
+        $this->pagos = $this->model->listar($page, $this->cantidadPorPagina);
+        $_GET['pages'] = ceil($this->cantidadPago / $this->cantidadPorPagina);
         include 'views/pago/lista.php';
     }
 
@@ -61,7 +68,7 @@ class PagoController
 
     public function ver()
     {
-        $this->Pago = $this->consultar();
+        $this->pago = $this->consultar();
         include 'views/pago/ver.php';
     }
 
@@ -85,7 +92,7 @@ class PagoController
 
     public function editar()
     {
-        $this->Pago = $this->consultar();
+        $this->pago = $this->consultar();
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('monto', 'medio', 'codigo_est')) {
             $this->model->setmonto($_POST['monto']);
             $this->model->setmedio($_POST['medio']);
@@ -102,7 +109,7 @@ class PagoController
 
     public function eliminar()
     {
-        $this->Pago = $this->consultar();
+        $this->pago = $this->consultar();
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('id')) {
             $resultado = $this->model->eliminar($_POST['id']);
             if ($resultado) {

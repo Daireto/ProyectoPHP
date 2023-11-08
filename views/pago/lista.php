@@ -47,12 +47,12 @@
                         <?php endforeach ?>
                     </tbody>
                 </table>
-                <?php if ($this->cantidadPago > $this->cantidadPago): ?>
+                <?php if ($this->cantidadPago > $this->cantidadPorPagina): ?>
                     <div class="paginacion">
                         <div class="cantidad-registros">
                             <?php
                                 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-                                $inicio = ($page - 1) * $this->cantidadPago;
+                                $inicio = ($page - 1) * $this->cantidadPorPagina;
                                 $final = $inicio + count($this->pago);
                                 $rango = "Mostrando ".($inicio+1)."-".$final." pagos";
                             ?>
