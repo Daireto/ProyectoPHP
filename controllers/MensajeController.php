@@ -53,6 +53,11 @@ class MensajeController
         }
     }
 
+    public function contarNoLeidos()
+    {
+        return $this->model->contarNoLeidos();
+    }
+
     public function listar()
     {
         $page = isset($_GET['page']) ? intval($_GET['page']) : 1;

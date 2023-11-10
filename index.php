@@ -17,6 +17,9 @@ $cuentaController = new CuentaController();
 $pagoController = new PagoController();
 $mensajeController = new MensajeController();
 
+// Mensajes pendientes
+$_GET['mensajesPendientes'] = validar_rol('Admin') ? $mensajeController->contarNoLeidos() : null;
+
 // Rutas
 $url = isset($_GET['url']) ? $_GET['url'] : 'principal';
 try {

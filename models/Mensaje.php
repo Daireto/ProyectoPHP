@@ -23,7 +23,7 @@ class Mensaje
     {
         $page = ($page - 1) * $cantidadPorPagina;
         $sql = "SELECT * FROM Mensajes
-            ORDER BY fecha_creacion DESC LIMIT {$cantidadPorPagina} OFFSET {$page}";
+            ORDER BY cedula ASC, fecha_creacion DESC LIMIT {$cantidadPorPagina} OFFSET {$page}";
         $resultado = $this->db->query($sql);
         if ($resultado->num_rows > 0) {
             $mensajes = $resultado->fetch_all(MYSQLI_ASSOC);
@@ -49,6 +49,15 @@ class Mensaje
     public function contar()
     {
         $sql = "SELECT COUNT(codigo) as total FROM mensajes";
+        $resultado = $this->db->query($sql);
+        $total = $resultado->fetch_assoc()['total'];
+        $resultado->free();
+        return $total;
+    }
+
+    public function contarNoLeidos()
+    {
+        $sql = "SELECT COUNT(codigo) as total FROM mensajes WHERE cedula IS NULL";
         $resultado = $this->db->query($sql);
         $total = $resultado->fetch_assoc()['total'];
         $resultado->free();
