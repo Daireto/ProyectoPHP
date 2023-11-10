@@ -23,6 +23,7 @@ class MensajeController
         $accion = isset($_GET['accion']) ? $_GET['accion'] : 'listar';
         switch ($accion) {
             case 'listar':
+                validar_sesion('Admin');
                 $this->listar();
                 break;
 
@@ -31,14 +32,17 @@ class MensajeController
                 break;
 
             case 'ver':
+                validar_sesion('Admin');
                 $this->ver();
                 break;
 
             case 'eliminar':
+                validar_sesion('Admin');
                 $this->eliminar();
                 break;
 
             case 'marcarLeido':
+                validar_sesion('Admin');
                 $this->marcarLeido();
                 break;
 
