@@ -22,11 +22,11 @@
                 <form action="?url=pago&accion=editar&id=<?php echo $this->pago['codigo'] ?>" method="post">
                     <div class="campo-formulario">
                         <label>Monto</label>
-                        <input type="number" id="monto" name="monto" value="<?php echo mostrar_campo('monto') ?? $this->pago['monto'] ?>" required>
+                        <input type="number" id="monto" name="monto" value="<?php mostrar_campo('monto') ?? $this->pago['monto'] ?>" required>
                     </div>
                     <div class="campo-formulario">
                         <label>Medio</label>
-                        <select class="campo" id="medio" name="medio" required value="<?php echo mostrar_campo('medio') ?? $this->pago['monto'] ?>">
+                        <select class="campo" id="medio" name="medio" required value="<?php mostrar_campo('medio') ?? $this->pago['monto'] ?>">
                             <?php foreach ($this->medios as $medio): ?>
                                 <option value="<?php echo $medio ?>" <?php echo (mostrar_campo('medio') ?? $this->pago['medio']) == $medio ? 'selected' : '' ?> > <?php echo $medio ?></option>
                             <?php endforeach ?>
@@ -34,7 +34,7 @@
                     </div>
                     <div class="campo-formulario">
                         <label>Codigo Estadia</label>
-                        <input type="number" id="codigo_est" name="codigo_est" value="<?php echo mostrar_campo('codigo_est') ?? $this->pago['codigo_est']?>" required>
+                        <input type="number" id="codigo_est" name="codigo_est" value="<?php mostrar_campo('codigo_est') ?? $this->pago['codigo_est']?>" required>
                     </div>
                     <div class="opciones-formulario">
                         <button class="submit" type="submit">Guardar</button>

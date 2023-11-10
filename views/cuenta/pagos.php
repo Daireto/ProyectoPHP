@@ -40,7 +40,7 @@
                                 <td class="campo"><?php echo $pago['medio'] ?></td>
                                 <td class="campo"><?php echo $pago['codigo_est'] ?></td>
                                 <td class="opciones">
-                                    <a class="ver" href="?url=cuenta&accion=ver-pago">Ver</a>
+                                    <a class="ver" href="?url=cuenta&accion=ver-pago&id=<?php echo $pago['codigo'] ?>">Ver</a>
                                 </td>
                             </tr>
                         <?php endforeach ?>

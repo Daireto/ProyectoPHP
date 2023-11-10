@@ -22,19 +22,19 @@
                 <form action="?url=estadias&accion=editar&id=<?php echo $this->estadia['codigo'] ?>" method="post">
                     <div class="campo-formulario">
                         <label>Placa</label>
-                        <input type="text" id="placa" name="placa" value="<?php echo mostrar_campo('placa') ?? $this->estadia['placa'] ?>" required>
+                        <input type="text" id="placa" name="placa" value="<?php mostrar_campo('placa') ?? $this->estadia['placa'] ?>" required>
                     </div>
                     <div class="campo-formulario">
                         <label>Cédula</label>
-                        <input type="number" id="cedula" name="cedula" value="<?php echo mostrar_campo('cedula') ?? $this->estadia['cedula'] ?>" min="10000000" max="9999999999" required>
+                        <input type="number" id="cedula" name="cedula" value="<?php mostrar_campo('cedula') ?? $this->estadia['cedula'] ?>" min="10000000" max="9999999999" required>
                     </div>
                     <div class="campo-formulario">
                         <label>Fecha de ingreso</label>
-                        <input type="datetime-local" id="fecha_ingreso" name="fecha_ingreso" value="<?php echo mostrar_campo('fecha_ingreso') ?? $this->estadia['fecha_ingreso'] ?>" required>
+                        <input type="datetime-local" id="fecha_ingreso" name="fecha_ingreso" value="<?php mostrar_campo('fecha_ingreso') ?? $this->estadia['fecha_ingreso'] ?>" required>
                     </div>
                     <div class="campo-formulario">
                         <label>Fecha de salida</label>
-                        <input type="datetime-local" id="fecha_salida" name="fecha_salida" value="<?php echo mostrar_campo('fecha_salida') ?? $this->estadia['fecha_salida'] ?>" required>
+                        <input type="datetime-local" id="fecha_salida" name="fecha_salida" value="<?php mostrar_campo('fecha_salida') ?? $this->estadia['fecha_salida'] ?>" required>
                     </div>
                     <div class="opciones-formulario">
                         <button class="submit" type="submit">Guardar</button>
