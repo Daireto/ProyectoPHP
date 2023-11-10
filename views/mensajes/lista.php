@@ -13,7 +13,6 @@
                 <div class="lista-encabezado">
                     <h2>Mensajes</h2>
                     <div class="lista-opciones">
-                        <a href="?url=mensajes&accion=crear">Crear mensaje</a>
                     </div>
                 </div>
                 <table>
@@ -30,31 +29,31 @@
                     <tbody>
                         <?php if (count($this->mensajes) == 0): ?>
                             <tr class="registro">
-                                <td class="campo" colspan="5">No se encontró ningún mensaje</td>
+                                <td class="campo" colspan="6">No se encontró ningún mensaje</td>
                             </tr>
                         <?php endif ?>
-                        <?php foreach ($this->mensajes as $mensaje): ?>
+                        <?php foreach ($this->mensajes as $Mensaje): ?>
                             <tr class="registro">
                                 <td class="campo">
-                                    <?php echo $mensaje['nombre'] ?>
+                                    <?php echo $Mensaje['nombre'] ?>
                                 </td>
                                 <td class="campo">
-                                    <?php echo $mensaje['email'] ?>
+                                    <?php echo $Mensaje['email'] ?>
                                 </td>
                                 <td class="campo">
-                                    <?php echo $mensaje['asunto'] ?>
+                                    <?php echo $Mensaje['asunto'] ?>
                                 </td>
                                 <td class="campo">
-                                    <?php echo $mensaje['codigo'] ?>
+                                    <?php echo $Mensaje['codigo'] ?>
                                 </td>
                                 <td class="campo">
-                                    <?php echo $mensaje['fecha_creacion'] ?>
+                                    <?php echo $Mensaje['fecha_creacion'] ?>
                                 </td>
                                 <td class="opciones">
                                     <a class="ver"
-                                        href="?url=mensajes&accion=ver&id=<?php echo $mensaje['codigo'] ?>">Ver</a>
+                                        href="?url=mensajes&accion=ver&id=<?php echo $Mensaje['codigo'] ?>">Ver</a>
                                     <a class="eliminar"
-                                        href="?url=mensajes&accion=eliminar&id=<?php echo $mensaje['codigo'] ?>">Eliminar</a>
+                                        href="?url=mensajes&accion=eliminar&id=<?php echo $Mensaje['codigo'] ?>">Eliminar</a>
                                 </td>
                             </tr>
                         <?php endforeach ?>

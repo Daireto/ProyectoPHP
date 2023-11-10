@@ -1,5 +1,5 @@
 <?php
-require_once 'models/Mensaje.php';
+require_once 'models/Mensajes.php';
 
 class MensajeController
 {
@@ -34,10 +34,6 @@ class MensajeController
                 $this->ver();
                 break;
 
-            case 'editar':
-                $this->editar();
-                break;
-
             case 'eliminar':
                 $this->eliminar();
                 break;
@@ -59,7 +55,7 @@ class MensajeController
         $this->cantidadMensajes = $this->model->contar();
         $this->mensajes = $this->model->listar($page, $this->cantidadPorPagina);
         $_GET['pages'] = ceil($this->cantidadMensajes / $this->cantidadPorPagina);
-        include 'views/mensajes/lista_mensajes.php';
+        include 'views/mensajes/lista.php';
     }
 
     public function consultar()
@@ -76,46 +72,32 @@ class MensajeController
     public function ver()
     {
         $this->mensaje = $this->consultar();
-        include 'views/mensajes/ver_mensaje.php';
+        include 'views/mensajes/ver.php';
     }
 
     public function crear()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('nombre', 'email', 'asunto')) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('nombre', 'email', 'asunto', 'mensaje')) {
             $this->model->setNombre($_POST['nombre']);
             $this->model->setEmail($_POST['email']);
             $this->model->setAsunto($_POST['asunto']);
+            $this->model->setMensaje($_POST['mensaje']);
             $resultado = $this->model->crear();
             if ($resultado) {
-                header('Location:' . 'index.php?url=mensajes');
+                $_GET["texto"] = "Mensaje enviado con exito";
             } else {
                 $this->errors = array('No se pudo crear el mensaje');
             }
         }
-        include 'views/mensajes/crear_mensaje.php';
+        include 'views/principal.php';
     }
 
-    public function editar()
-    {
-        $this->mensaje = $this->consultar();
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('nombre', 'email', 'asunto')) {
-            $this->model->setNombre($_POST['nombre']);
-            $this->model->setEmail($_POST['email']);
-            $this->model->setAsunto($_POST['asunto']);
-            $resultado = $this->model->editar($_GET['id']);
-            if ($resultado) {
-                header('Location:' . 'index.php?url=mensajes');
-            } else {
-                $this->errors = array('No se pudo editar el mensaje');
-            }
-        }
-        include 'views/mensajes/editar_mensaje.php';
-    }
+    
 
     public function eliminar()
     {
         $this->mensaje = $this->consultar();
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('id')) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $resultado = $this->model->eliminar($_POST['id']);
             if ($resultado) {
                 header('Location:' . 'index.php?url=mensajes');
@@ -123,15 +105,16 @@ class MensajeController
                 $this->errors = array('No se pudo eliminar el mensaje');
             }
         }
-        include 'views/mensajes/eliminar_mensaje.php';
+        include 'views/mensajes/eliminar.php';
     }
 
     public function marcarLeido()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('id')) {
-            $resultado = $this->model->marcarComoLeido($_POST['id'], $_SESSION['cedula']);
+        $this->mensaje = $this->consultar();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $resultado = $this->model->marcarComoLeido($_GET['id'], $_SESSION['cedula']);
             if ($resultado) {
-                header('Location:' . 'index.php?url=mensajes');
+                header('Location:' . 'index.php?url=mensajes&accion=ver&id='.$_GET['id']);
             } else {
                 $this->errors = array('No se pudo marcar el mensaje como leído');
             }

@@ -11,14 +11,14 @@ class Mensaje
     private $fecha_creacion;
     private $mensaje;
     private $asunto;
-    private $FK_cedula;
+    private $cedula;
 
     public function __construct()
     {
         $this->db = Database::connect();
     }
 
-    public function listarMensajes($page = 1, $cantidadPorPagina = 8)
+    public function listar($page = 1, $cantidadPorPagina = 8)
     {
         $page = ($page - 1) * $cantidadPorPagina;
         $sql = "SELECT * FROM Mensajes
@@ -32,7 +32,7 @@ class Mensaje
         return array();
     }
 
-    public function consultarMensaje($codigo)
+    public function consultar($codigo)
     {
         $sql = "SELECT * FROM Mensajes
             WHERE codigo = {$this->db->real_escape_string($codigo)} LIMIT 1";
@@ -45,19 +45,34 @@ class Mensaje
         return null;
     }
 
-    public function crearMensaje()
+    public function contar()
     {
-        $sql = "INSERT INTO Mensajes (nombre, email, mensaje, asunto, FK_cedula)
-            VALUES ('{$this->getNombre()}', '{$this->getEmail()}', '{$this->getMensaje()}', '{$this->getAsunto()}', {$this->getFKCedula()})";
+        $sql = "SELECT COUNT(codigo) as total FROM mensajes";
+        $resultado = $this->db->query($sql);
+        $total = $resultado->fetch_assoc()['total'];
+        $resultado->free();
+        return $total;
+    }
+
+    public function crear()
+    {
+        $sql = "INSERT INTO mensajes (codigo, nombre, email, mensaje, asunto)
+            VALUES (null,'{$this->getNombre()}', '{$this->getEmail()}', '{$this->getMensaje()}', '{$this->getAsunto()}')";
+        return $this->db->query($sql);
+    }
+
+    public function eliminar($codigo)
+    {
+        $sql = "DELETE FROM mensajes
+            WHERE codigo = {$this->db->real_escape_string($codigo)}";
 
         return $this->db->query($sql);
     }
 
-    public function eliminarMensaje($codigo)
-    {
-        $sql = "DELETE FROM Mensajes
-            WHERE codigo = {$this->db->real_escape_string($codigo)}";
-
+    public function marcarComoLeido($id, $cedula){
+        $sql = "UPDATE mensajes
+        SET cedula = {$cedula}
+        WHERE codigo = {$this->db->real_escape_string($id)}";
         return $this->db->query($sql);
     }
 
@@ -84,7 +99,7 @@ class Mensaje
 
     public function getFKCedula()
     {
-        return $this->FK_cedula;
+        return $this->cedula;
     }
 
     public function getFechaCreacion()
@@ -114,8 +129,10 @@ class Mensaje
 
     public function setFKCedula($cedula)
     {
-        $this->FK_cedula = $this->db->real_escape_string($cedula);
+        $this->cedula = $this->db->real_escape_string($cedula);
     }
+
+    
 
 }
 ?>

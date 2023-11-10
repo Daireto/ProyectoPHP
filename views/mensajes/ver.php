@@ -14,8 +14,7 @@
                     <h2>Datos del mensaje</h2>
                     <div class="ver-opciones">
                         <button class="regresar"><a href="?url=mensajes">Regresar</a></button>
-                        <button class="eliminar"><a
-                                href="?url=mensajes&accion=eliminar&id=<?php echo $this->mensaje['codigo'] ?>">Eliminar</a></button>
+                        <button class="eliminar"><a href="?url=mensajes&accion=eliminar&id=<?php echo $this->mensaje['codigo'] ?>">Eliminar</a></button>
                     </div>
                 </div>
                 <div class="ver-contenido">
@@ -51,7 +50,7 @@
                     </div>
                     <!-- Botón para marcar como leído -->
                     <div class="ver-campo">
-                        <?php if ($this->mensaje['cedula_usuario'] === null): ?>
+                        <?php if ($this->mensaje['cedula'] === null): ?>
                             <form action="?url=mensajes&accion=marcarLeido&id=<?php echo $this->mensaje['codigo'] ?>"
                                 method="post">
                                 <button class="leido" type="submit">Marcar como leído</button>
@@ -59,7 +58,7 @@
                         <?php else: ?>
                             <div class="campo-etiqueta">Leído por</div>
                             <div class="campo-valor">
-                                <?php echo $this->mensaje['cedula_usuario'] ?>
+                                <?php echo $this->mensaje['cedula'] ?>
                             </div>
                         <?php endif; ?>
                     </div>
