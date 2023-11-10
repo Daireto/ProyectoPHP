@@ -7,15 +7,15 @@ class PagoController
     public $errors;
     public $pago;
     public $pagos;
-    public $cantidadPago;
+    public $cantidadPagos;
     public $cantidadPorPagina;
     public $medios;
- 
+
     public function __construct()
     {
         $this->model = new Pago();
         $this->errors = null;
-        $this->cantidadPago = 0;
+        $this->cantidadPagos = 0;
         $this->cantidadPorPagina = 8;
         $this->medios = array('Efectivo','Tarjeta','Transferencia');
     }
@@ -40,7 +40,7 @@ class PagoController
             case 'editar':
                 $this->editar();
                 break;
-            
+
             case 'eliminar':
                 $this->eliminar();
                 break;
@@ -55,9 +55,9 @@ class PagoController
     public function listar()
     {
         $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-        $this->cantidadPago = $this->model->contar();
+        $this->cantidadPagos = $this->model->contar();
         $this->pagos = $this->model->listar($page, $this->cantidadPorPagina);
-        $_GET['pages'] = ceil($this->cantidadPago / $this->cantidadPorPagina);
+        $_GET['pages'] = ceil($this->cantidadPagos / $this->cantidadPorPagina);
         include 'views/pago/lista.php';
     }
 
@@ -80,12 +80,12 @@ class PagoController
 
     public function crear()
     {
-        
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && validar_campos('monto', 'medio', 'codigo_est')) {
             $this->model->setMonto($_POST['monto']);
             $this->model->setMedio($_POST['medio']);
             $this->model->setCodigoEstadia($_POST['codigo_est']);
-            
+
             $resultado = $this->model->crear();
             if ($resultado) {
                 header('Location:' . 'index.php?url=pago');
@@ -127,10 +127,3 @@ class PagoController
         include 'views/pago/eliminar.php';
     }
 }
-
-
-
-
-
-
-

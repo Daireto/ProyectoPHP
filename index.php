@@ -15,7 +15,7 @@ $usuarioController = new UsuarioController();
 $estadiaController = new EstadiaController();
 $cuentaController = new CuentaController();
 $pagoController = new PagoController();
-$MensajeController = new MensajeController();
+$mensajeController = new MensajeController();
 
 // Rutas
 $url = isset($_GET['url']) ? $_GET['url'] : 'principal';
@@ -55,7 +55,7 @@ try {
             break;
 
         case 'mensajes':
-            $MensajeController->ejecutar();
+            $mensajeController->ejecutar();
             break;
 
         case 'no-autorizado':

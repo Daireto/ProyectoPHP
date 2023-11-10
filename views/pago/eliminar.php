@@ -10,7 +10,7 @@
     <main>
         <section class="eliminar">
             <div class="eliminar-contenedor">
-                <h2>Eliminar Pago</h2>
+                <h2>Eliminar pago</h2>
                 <p class="texto-confirmar">¿Desea eliminar al pago con código <span id="id-registro"><?php echo $this->pago['codigo'] ?></span>?</p>
                 <p class="texto-advertencia">¡Esta operación es irreversible!</p>
                 <form action="?url=pago&accion=eliminar&id=<?php echo $this->pago['codigo'] ?>" method="post">

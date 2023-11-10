@@ -1,5 +1,6 @@
 <?php include "views/layout/header.php" ?>
-<link rel="stylesheet" href="assets/css/layout/ver.css">
+    <link rel="stylesheet" href="assets/css/layout/ver.css">
+    <link rel="stylesheet" href="assets/css/mensajes/ver.css">
 </head>
 
 <body>
@@ -19,6 +20,23 @@
                 </div>
                 <div class="ver-contenido">
                     <div class="ver-campo">
+                        <div class="campo-etiqueta">Código</div>
+                        <div class="campo-valor">
+                            <?php echo $this->mensaje['codigo'] ?>
+                        </div>
+                    </div>
+                    <div class="ver-campo">
+                        <?php if ($this->mensaje['cedula'] != null): ?>
+                            <div class="campo-etiqueta">Leído por</div>
+                            <div class="campo-valor">
+                                <?php echo $this->mensaje['cedula'] ?>
+                            </div>
+                        <?php else: ?>
+                            <div class="campo-etiqueta">Leído</div>
+                            <div class="campo-valor">No</div>
+                        <?php endif; ?>
+                    </div>
+                    <div class="ver-campo">
                         <div class="campo-etiqueta">Nombre</div>
                         <div class="campo-valor">
                             <?php echo $this->mensaje['nombre'] ?>
@@ -37,10 +55,8 @@
                         </div>
                     </div>
                     <div class="ver-campo">
-                        <div class="campo-etiqueta">Código</div>
-                        <div class="campo-valor">
-                            <?php echo $this->mensaje['codigo'] ?>
-                        </div>
+                        <div class="campo-etiqueta">Mensaje</div>
+                        <textarea class="campo-textarea" rows="5" readonly><?php echo $this->mensaje['mensaje'] ?></textarea>
                     </div>
                     <div class="ver-campo">
                         <div class="campo-etiqueta">Fecha de creación</div>
@@ -48,22 +64,22 @@
                             <?php echo $this->mensaje['fecha_creacion'] ?>
                         </div>
                     </div>
-                    <!-- Botón para marcar como leído -->
                     <div class="ver-campo">
+                        <div class="campo-etiqueta">Fecha de actualización</div>
+                        <div class="campo-valor">
+                            <?php echo $this->mensaje['fecha_actualizacion'] ?>
+                        </div>
+                    </div>
+                    <div class="ver-campo expandir">
                         <?php if ($this->mensaje['cedula'] === null): ?>
                             <form action="?url=mensajes&accion=marcarLeido&id=<?php echo $this->mensaje['codigo'] ?>"
                                 method="post">
-                                <button class="leido" type="submit">Marcar como leído</button>
+                                <button class="marcar-leido" type="submit">Marcar como leído</button>
                             </form>
-                        <?php else: ?>
-                            <div class="campo-etiqueta">Leído por</div>
-                            <div class="campo-valor">
-                                <?php echo $this->mensaje['cedula'] ?>
-                            </div>
                         <?php endif; ?>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-    <?php include "views/layout/footer.php" ?>
+<?php include "views/layout/footer.php" ?>

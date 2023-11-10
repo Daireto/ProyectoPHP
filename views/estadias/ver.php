@@ -28,14 +28,6 @@
                         <div class="campo-valor"><?php echo $this->estadia['placa'] ?></div>
                     </div>
                     <div class="ver-campo">
-                        <div class="campo-etiqueta">Fecha de ingreso</div>
-                        <div class="campo-valor"><?php echo $this->estadia['fecha_ingreso'] ?></div>
-                    </div>
-                    <div class="ver-campo">
-                        <div class="campo-etiqueta">Fecha de salida</div>
-                        <div class="campo-valor"><?php echo $this->estadia['fecha_salida'] ?></div>
-                    </div>
-                    <div class="ver-campo">
                         <div class="campo-etiqueta">Cédula</div>
                         <div class="campo-valor"><?php echo $this->estadia['cedula'] ?></div>
                     </div>
@@ -48,6 +40,14 @@
                                 No
                             <?php endif ?>
                         </div>
+                    </div>
+                    <div class="ver-campo">
+                        <div class="campo-etiqueta">Fecha de ingreso</div>
+                        <div class="campo-valor"><?php echo $this->estadia['fecha_ingreso'] ?></div>
+                    </div>
+                    <div class="ver-campo">
+                        <div class="campo-etiqueta">Fecha de salida</div>
+                        <div class="campo-valor"><?php echo $this->estadia['fecha_salida'] ?></div>
                     </div>
                     <div class="ver-campo">
                         <div class="campo-etiqueta">Fecha de creación</div>

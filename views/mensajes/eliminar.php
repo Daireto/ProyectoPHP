@@ -1,5 +1,5 @@
 <?php include "views/layout/header.php" ?>
-<link rel="stylesheet" href="assets/css/layout/eliminar.css">
+    <link rel="stylesheet" href="assets/css/layout/eliminar.css">
 </head>
 
 <body>
@@ -25,4 +25,4 @@
             </div>
         </section>
     </main>
-    <?php include "views/layout/footer.php" ?>
+<?php include "views/layout/footer.php" ?>

@@ -33,9 +33,9 @@
                         </select>
                     </div>
                     <div class="campo-formulario">
-                        <label>Codigo Estadia</label>
+                        <label>Codigo de estadía</label>
                         <input type="number" id="codigo_est" name="codigo_est" value="<?php mostrar_campo('codigo_est') ?>" required>
-                    </div>          
+                    </div>
                     <div class="opciones-formulario">
                         <button class="submit" type="submit">Guardar</button>
                         <button class="cancelar" onclick="window.history.go(-1); return false;">Cancelar</button>

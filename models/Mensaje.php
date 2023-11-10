@@ -8,10 +8,11 @@ class Mensaje
     private $codigo;
     private $nombre;
     private $email;
-    private $fecha_creacion;
     private $mensaje;
     private $asunto;
     private $cedula;
+    private $fecha_creacion;
+    private $fecha_actualizacion;
 
     public function __construct()
     {
@@ -76,36 +77,7 @@ class Mensaje
         return $this->db->query($sql);
     }
 
-    // Resto de los métodos, setters y getters...
-    public function getNombre()
-    {
-        return trim($this->nombre);
-    }
-
-    public function getEmail()
-    {
-        return trim($this->email);
-    }
-
-    public function getMensaje()
-    {
-        return trim($this->mensaje);
-    }
-
-    public function getAsunto()
-    {
-        return trim($this->asunto);
-    }
-
-    public function getFKCedula()
-    {
-        return $this->cedula;
-    }
-
-    public function getFechaCreacion()
-    {
-        return trim($this->fecha_creacion);
-    }
+    // Setters
 
     public function setNombre($nombre)
     {
@@ -127,12 +99,51 @@ class Mensaje
         $this->asunto = $this->db->real_escape_string($asunto);
     }
 
-    public function setFKCedula($cedula)
+    public function setCedula($cedula)
     {
         $this->cedula = $this->db->real_escape_string($cedula);
     }
 
-    
+    // Getters
 
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
+
+    public function getNombre()
+    {
+        return trim($this->nombre);
+    }
+
+    public function getEmail()
+    {
+        return trim($this->email);
+    }
+
+    public function getMensaje()
+    {
+        return trim($this->mensaje);
+    }
+
+    public function getAsunto()
+    {
+        return trim($this->asunto);
+    }
+
+    public function getCedula()
+    {
+        return $this->cedula;
+    }
+
+    public function getFechaCreacion()
+    {
+        return trim($this->fecha_creacion);
+    }
+
+    public function getFechaDeActualizacion()
+    {
+        return trim($this->fecha_actualizacion);
+    }
 }
 ?>

@@ -13,16 +13,16 @@
                 <div class="lista-encabezado">
                     <h2>Pago</h2>
                     <div class="lista-opciones">
-                        <a href="?url=pago&accion=crear">Crear Pago</a>
+                        <a href="?url=pago&accion=crear">Crear pago</a>
                     </div>
                 </div>
                 <table>
                     <thead>
                         <tr>
-                            <th class="nombre-columna">Codigo</th>
+                            <th class="nombre-columna">Código</th>
                             <th class="nombre-columna">Monto</th>
                             <th class="nombre-columna">Medio</th>
-                            <th class="nombre-columna">Codigo Estadia</th>
+                            <th class="nombre-columna">Codigo de estadía</th>
                             <th class="columna-opciones">Opciones</th>
                         </tr>
                     </thead>
@@ -47,7 +47,7 @@
                         <?php endforeach ?>
                     </tbody>
                 </table>
-                <?php if ($this->cantidadPago > $this->cantidadPorPagina): ?>
+                <?php if ($this->cantidadPagos > $this->cantidadPorPagina): ?>
                     <div class="paginacion">
                         <div class="cantidad-registros">
                             <?php

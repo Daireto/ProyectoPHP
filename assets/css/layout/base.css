@@ -10,6 +10,11 @@ body {
     background-color: #e9e9e9;
 }
 
+textarea {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+}
+
 /* Estilos de la barra de navegación */
 nav {
     background-color: #333;

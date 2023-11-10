@@ -1,5 +1,5 @@
 <?php
-require_once 'models/Mensajes.php';
+require_once 'models/Mensaje.php';
 
 class MensajeController
 {
@@ -84,15 +84,13 @@ class MensajeController
             $this->model->setMensaje($_POST['mensaje']);
             $resultado = $this->model->crear();
             if ($resultado) {
-                $_GET["texto"] = "Mensaje enviado con exito";
+                $_GET["texto"] = 'Mensaje enviado con éxito';
             } else {
                 $this->errors = array('No se pudo crear el mensaje');
             }
         }
         include 'views/principal.php';
     }
-
-    
 
     public function eliminar()
     {

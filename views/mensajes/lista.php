@@ -1,5 +1,5 @@
 <?php include "views/layout/header.php" ?>
-<link rel="stylesheet" href="assets/css/layout/lista.css">
+    <link rel="stylesheet" href="assets/css/layout/lista.css">
 </head>
 
 <body>
@@ -12,17 +12,15 @@
             <div class="lista-contenedor">
                 <div class="lista-encabezado">
                     <h2>Mensajes</h2>
-                    <div class="lista-opciones">
-                    </div>
+                    <div class="lista-opciones"></div>
                 </div>
                 <table>
                     <thead>
                         <tr>
-                            <th class="nombre-columna">Nombre</th>
+                            <th class="nombre-columna">Código</th>
                             <th class="nombre-columna">Correo electrónico</th>
                             <th class="nombre-columna">Asunto</th>
-                            <th class="nombre-columna">Código</th>
-                            <th class="nombre-columna">Fecha de Creación</th>
+                            <th class="nombre-columna">Leido</th>
                             <th class="columna-opciones">Opciones</th>
                         </tr>
                     </thead>
@@ -32,28 +30,29 @@
                                 <td class="campo" colspan="6">No se encontró ningún mensaje</td>
                             </tr>
                         <?php endif ?>
-                        <?php foreach ($this->mensajes as $Mensaje): ?>
+                        <?php foreach ($this->mensajes as $mensaje): ?>
                             <tr class="registro">
-                                <td class="campo">
-                                    <?php echo $Mensaje['nombre'] ?>
+                            <td class="campo">
+                                    <?php echo $mensaje['codigo'] ?>
                                 </td>
                                 <td class="campo">
-                                    <?php echo $Mensaje['email'] ?>
+                                    <?php echo $mensaje['email'] ?>
                                 </td>
                                 <td class="campo">
-                                    <?php echo $Mensaje['asunto'] ?>
+                                    <?php echo $mensaje['asunto'] ?>
                                 </td>
                                 <td class="campo">
-                                    <?php echo $Mensaje['codigo'] ?>
-                                </td>
-                                <td class="campo">
-                                    <?php echo $Mensaje['fecha_creacion'] ?>
+                                <?php if ($mensaje['cedula'] != null): ?>
+                                    Si
+                                <?php else: ?>
+                                    No
+                                <?php endif; ?>
                                 </td>
                                 <td class="opciones">
                                     <a class="ver"
-                                        href="?url=mensajes&accion=ver&id=<?php echo $Mensaje['codigo'] ?>">Ver</a>
+                                        href="?url=mensajes&accion=ver&id=<?php echo $mensaje['codigo'] ?>">Ver</a>
                                     <a class="eliminar"
-                                        href="?url=mensajes&accion=eliminar&id=<?php echo $Mensaje['codigo'] ?>">Eliminar</a>
+                                        href="?url=mensajes&accion=eliminar&id=<?php echo $mensaje['codigo'] ?>">Eliminar</a>
                                 </td>
                             </tr>
                         <?php endforeach ?>
@@ -85,4 +84,4 @@
             </div>
         </section>
     </main>
-    <?php include "views/layout/footer.php" ?>
+<?php include "views/layout/footer.php" ?>

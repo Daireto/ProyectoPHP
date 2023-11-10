@@ -13,26 +13,19 @@
                 <div class="ver-encabezado">
                     <h2>Datos de la estadía</h2>
                     <div class="ver-opciones">
+                        <button class="regresar"><a href="?url=cuenta">Regresar</a></button>
                         <button class="regresar"><a href="?url=cuenta&accion=estadias">Mis estadías</a></button>
                         <button class="regresar"><a href="?url=cuenta&accion=pagos">Mis pagos</a></button>
                     </div>
                 </div>
                 <div class="ver-contenido">
                     <div class="ver-campo">
-                        <div class="campo-etiqueta">Código</div>
+                        <div class="campo-etiqueta">Código de estadía</div>
                         <div class="campo-valor"><?php echo $this->estadia['codigo_estadia'] ?></div>
                     </div>
                     <div class="ver-campo">
                         <div class="campo-etiqueta">Placa</div>
                         <div class="campo-valor"><?php echo $this->estadia['placa'] ?></div>
-                    </div>
-                    <div class="ver-campo">
-                        <div class="campo-etiqueta">Fecha de ingreso</div>
-                        <div class="campo-valor"><?php echo $this->estadia['fecha_ingreso'] ?></div>
-                    </div>
-                    <div class="ver-campo">
-                        <div class="campo-etiqueta">Fecha de salida</div>
-                        <div class="campo-valor"><?php echo $this->estadia['fecha_salida'] ?></div>
                     </div>
                     <div class="ver-campo">
                         <div class="campo-etiqueta">Cédula</div>
@@ -47,6 +40,14 @@
                                 No
                             <?php endif ?>
                         </div>
+                    </div>
+                    <div class="ver-campo">
+                        <div class="campo-etiqueta">Fecha de ingreso</div>
+                        <div class="campo-valor"><?php echo $this->estadia['fecha_ingreso'] ?></div>
+                    </div>
+                    <div class="ver-campo">
+                        <div class="campo-etiqueta">Fecha de salida</div>
+                        <div class="campo-valor"><?php echo $this->estadia['fecha_salida'] ?></div>
                     </div>
                     <div class="ver-campo">
                         <div class="campo-etiqueta">Fecha de creación</div>
@@ -65,8 +66,8 @@
                     </div>
                     <div class="ver-contenido">
                         <div class="ver-campo">
-                            <div class="campo-etiqueta">Código</div>
-                            <div class="campo-valor"><?php echo $this->pago['codigo'] ?></div>
+                            <div class="campo-etiqueta">Código de pago</div>
+                            <div class="campo-valor"><?php echo $this->pago['codigo_pago'] ?></div>
                         </div>
                         <div class="ver-campo">
                             <div class="campo-etiqueta">Monto pagado</div>

@@ -43,7 +43,11 @@
                 </div>
                 <div class="contenedor-formulario-contacto">
                     <h2>Contáctenos</h2>
-                    <form class="formulario-contacto" action="?url=contacto" method="post">
+                    <?php if (isset($_GET['texto'])): ?>
+                        <p class="mensaje-formulario"><?php echo $_GET['texto'] ?></p>
+                        <script>window.scrollTo(0, document.body.scrollHeight);</script>
+                    <?php endif ?>
+                    <form class="formulario-contacto" action="?url=mensajes&accion=crear" method="post">
                         <div class="campo-formulario">
                             <label for="nombre">Nombre:</label>
                             <input type="text" id="nombre" name="nombre" required>

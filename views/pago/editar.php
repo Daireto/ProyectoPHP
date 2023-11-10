@@ -10,7 +10,7 @@
     <main>
         <section class="crear-editar">
             <div class="formulario-contenedor">
-                <h2>Editar Pago</h2>
+                <h2>Editar pago</h2>
                 <?php if (isset($_GET['mensaje'])): ?>
                     <div class="campo-error"><?php echo $_GET['mensaje'] ?></div>
                 <?php endif ?>
@@ -33,7 +33,7 @@
                         </select>
                     </div>
                     <div class="campo-formulario">
-                        <label>Codigo Estadia</label>
+                        <label>Codigo de estadía</label>
                         <input type="number" id="codigo_est" name="codigo_est" value="<?php mostrar_campo('codigo_est') ?? $this->pago['codigo_est']?>" required>
                     </div>
                     <div class="opciones-formulario">

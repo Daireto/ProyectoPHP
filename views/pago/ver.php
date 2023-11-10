@@ -11,7 +11,7 @@
         <section class="ver">
             <div class="ver-contenedor">
                 <div class="ver-encabezado">
-                    <h2>Datos del Pago</h2>
+                    <h2>Datos del pago</h2>
                     <div class="ver-opciones">
                         <button class="regresar"><a href="?url=pago">Regresar</a></button>
                         <button class="editar"><a href="?url=pago&accion=editar&id=<?php echo $this->pago['codigo'] ?>">Editar</a></button>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="ver-contenido">
                     <div class="ver-campo">
-                        <div class="campo-etiqueta">Codigo</div>
+                        <div class="campo-etiqueta">Código</div>
                         <div class="campo-valor"><?php echo $this->pago['codigo'] ?></div>
                     </div>
                     <div class="ver-campo">
@@ -32,15 +32,15 @@
                         <div class="campo-valor"><?php echo $this->pago['medio'] ?></div>
                     </div>
                     <div class="ver-campo">
-                        <div class="campo-etiqueta">Codigo Estadia</div>
+                        <div class="campo-etiqueta">Codigo de estadía</div>
                         <div class="campo-valor"><?php echo $this->pago['codigo_est'] ?></div>
                     </div>
                     <div class="ver-campo">
-                        <div class="campo-etiqueta">Fecha Creación</div>
+                        <div class="campo-etiqueta">Fecha de creación</div>
                         <div class="campo-valor"><?php echo $this->pago['fecha_creacion'] ?></div>
                     </div>
                     <div class="ver-campo">
-                        <div class="campo-etiqueta">Fecha Actualización</div>
+                        <div class="campo-etiqueta">Fecha de actualización</div>
                         <div class="campo-valor"><?php echo $this->pago['fecha_actualizacion'] ?></div>
                     </div>
                 </div>
