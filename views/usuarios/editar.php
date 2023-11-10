@@ -22,23 +22,23 @@
                 <form action="?url=usuarios&accion=editar&id=<?php echo $this->usuario['cedula'] ?>" method="post">
                     <div class="campo-formulario">
                         <label>Usuario</label>
-                        <input type="text" id="usuario" name="usuario" value="<?php echo mostrar_campo('usuario') ?? $this->usuario['usuario'] ?>" required>
+                        <input type="text" id="usuario" name="usuario" value="<?php mostrar_campo('usuario') ?? $this->usuario['usuario'] ?>" required>
                     </div>
                     <div class="campo-formulario">
                         <label>Correo electrónico</label>
-                        <input type="email" id="email" name="email" value="<?php echo mostrar_campo('email') ?? $this->usuario['email'] ?>" required>
+                        <input type="email" id="email" name="email" value="<?php mostrar_campo('email') ?? $this->usuario['email'] ?>" required>
                     </div>
                     <div class="campo-formulario">
                         <label>Nombre</label>
-                        <input type="text" id="nombre" name="nombre" value="<?php echo mostrar_campo('nombre') ?? $this->usuario['nombre'] ?>" required>
+                        <input type="text" id="nombre" name="nombre" value="<?php mostrar_campo('nombre') ?? $this->usuario['nombre'] ?>" required>
                     </div>
                     <div class="campo-formulario">
                         <label>Apellido</label>
-                        <input type="text" id="apellido" name="apellido" value="<?php echo mostrar_campo('apellido') ?? $this->usuario['apellido'] ?>" required>
+                        <input type="text" id="apellido" name="apellido" value="<?php mostrar_campo('apellido') ?? $this->usuario['apellido'] ?>" required>
                     </div>
                     <div class="campo-formulario">
                         <label>Cédula</label>
-                        <input type="number" id="cedula" name="cedula" value="<?php echo mostrar_campo('cedula') ?? $this->usuario['cedula'] ?>" min="10000000" max="9999999999" required>
+                        <input type="number" id="cedula" name="cedula" value="<?php mostrar_campo('cedula') ?? $this->usuario['cedula'] ?>" min="10000000" max="9999999999" required>
                     </div>
                     <div class="campo-formulario">
                         <label>Rol</label>

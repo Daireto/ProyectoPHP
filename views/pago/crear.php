@@ -22,11 +22,11 @@
                 <form action="?url=pago&accion=crear" method="post">
                     <div class="campo-formulario">
                         <label>Monto</label>
-                        <input type="number" id="monto" name="monto" value="<?php echo mostrar_campo('monto') ?>" min="0" required>
+                        <input type="number" id="monto" name="monto" value="<?php mostrar_campo('monto') ?>" min="0" required>
                     </div>
                     <div class="campo-formulario">
                         <label>Medio</label>
-                        <select class="campo" id="medio" name="medio" required value="<?php echo mostrar_campo('medio') ?>">
+                        <select class="campo" id="medio" name="medio" required value="<?php mostrar_campo('medio') ?>">
                             <?php foreach ($this->medios as $medio): ?>
                                 <option value="<?php echo $medio ?>"> <?php echo $medio ?></option>
                             <?php endforeach ?>
@@ -34,7 +34,7 @@
                     </div>
                     <div class="campo-formulario">
                         <label>Codigo Estadia</label>
-                        <input type="number" id="codigo_est" name="codigo_est" value="<?php echo mostrar_campo('codigo_est') ?>" required>
+                        <input type="number" id="codigo_est" name="codigo_est" value="<?php mostrar_campo('codigo_est') ?>" required>
                     </div>          
                     <div class="opciones-formulario">
                         <button class="submit" type="submit">Guardar</button>
