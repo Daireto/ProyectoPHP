@@ -8,6 +8,7 @@
                 <li class="item"><a href="?url=usuarios">Usuarios</a></li>
                 <li class="item"><a href="?url=estadias">Estadías</a></li>
                 <li class="item"><a href="?url=pago">Pagos</a></li>
+                <li class="item"><a href="?url=mensajes">Mensajes</a></li>
             </ul>
         <?php endif ?>
     </div>
