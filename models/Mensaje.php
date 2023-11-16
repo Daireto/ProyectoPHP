@@ -22,7 +22,7 @@ class Mensaje
     public function listar($page = 1, $cantidadPorPagina = 8)
     {
         $page = ($page - 1) * $cantidadPorPagina;
-        $sql = "SELECT * FROM Mensajes
+        $sql = "SELECT * FROM mensajes
             ORDER BY cedula ASC, fecha_creacion DESC LIMIT {$cantidadPorPagina} OFFSET {$page}";
         $resultado = $this->db->query($sql);
         if ($resultado->num_rows > 0) {
@@ -35,7 +35,7 @@ class Mensaje
 
     public function consultar($codigo)
     {
-        $sql = "SELECT * FROM Mensajes
+        $sql = "SELECT * FROM mensajes
             WHERE codigo = {$this->db->real_escape_string($codigo)} LIMIT 1";
         $resultado = $this->db->query($sql);
         if ($resultado->num_rows > 0) {

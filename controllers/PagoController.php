@@ -69,7 +69,7 @@ class PagoController
                 return $Pago;
             }
         }
-        mostrar_error('Pago no encontrada');
+        mostrar_error('Pago no encontrado');
     }
 
     public function ver()
