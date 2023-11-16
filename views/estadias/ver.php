@@ -35,7 +35,7 @@
                         <div class="campo-etiqueta">Pagada</div>
                         <div class="campo-valor">
                             <?php if ($this->estadia['codigo_est'] != null): ?>
-                                <a href="?url=pagos&accion=ver&id=<?php echo $this->estadia['codigo_est'] ?>">Si</a>
+                                <a href="?url=pago&accion=ver&id=<?php echo $this->estadia['codigo_est'] ?>">Si</a>
                             <?php else: ?>
                                 No
                             <?php endif ?>
