@@ -1,13 +1,34 @@
 <?php
 class Database
 {
+    private static $objeto = null;
+    private $conn;
+
+    private $host = 'localhost';
+    private $usuario = 'root';
+    private $passwd = '';
+    private $database = 'parking';
+
+    private function __construct()
+    {
+        $this->conn = new mysqli($this->host, $this->usuario, $this->passwd, $this->database);
+
+        if ($this->conn->connect_error) {
+            die('Connection failed: ' . $this->conn->connect_error);
+        }
+    }
+
     public static function connect()
     {
-        $conexion = new mysqli("localhost", "root", "", "parking");
+        if (self::$objeto === null) {
+            self::$objeto = new self();
+        }
 
-        // Permite que la BD venga codificada en UTF8
-        $conexion->query("SET NAMES 'utf8'");
+        return self::$objeto->conn;
+    }
 
-        return $conexion;
+    public function __destruct()
+    {
+        $this->conn->close();
     }
 }
